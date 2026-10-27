@@ -10,8 +10,8 @@ Android only in practice: `ios/` holds generated leftovers but no Xcode project,
 so iOS has to be regenerated with `flutter create --platforms=ios .` before it
 can build.
 
-See [`plan.txt`](plan.txt) for the full feature summary, changelog and known
-limitations.
+See the [root README](../README.md) for what the app does, how to use it and
+its known limitations. This file covers the code.
 
 ## Repository layout
 

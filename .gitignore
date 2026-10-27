@@ -7,6 +7,11 @@
 # they are downloadable but not cloned.
 5-releases/*.apk
 
+# Working notes: the feature summary, changelog and known-limitations list.
+# Kept locally, deliberately untracked -- README.md is the published account
+# of what the app does, and two copies of that drift apart.
+3-code/plan.txt
+
 # OS and editor cruft
 .DS_Store
 Thumbs.db

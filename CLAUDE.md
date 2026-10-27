@@ -95,4 +95,6 @@ Not covered by tests: the system file-picker dialogs used by backup export/impor
 
 Licensed MIT (`LICENSE` at the repo root); the root `README.md` states it too.
 
-`3-code/plan.txt` is the feature summary, changelog and known-limitations list. `3-code/README.md` covers layout, commands and architecture. Both are current as of v1.5.0+6 — keep them so when behaviour changes.
+The root `README.md` is the published account of the app: what it does, how to use it, the settings reference and the known limitations. It is the GitHub landing page, and it carries the version number. `3-code/README.md` is the developer-facing one — layout, commands, architecture. Both are current as of v1.5.0+6; keep them so when behaviour changes.
+
+`3-code/plan.txt` still exists locally as scratch working notes but is **untracked on purpose** (see `.gitignore`). Do not restore it to git and do not treat it as authoritative: it duplicated the README's feature list and the two drifted. Anything worth publishing belongs in a README.

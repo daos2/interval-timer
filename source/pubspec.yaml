@@ -29,8 +29,18 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: true
-  ios: true
-  image_path: "assets/app_icon.jpg"
+  # There is no ios/Runner.xcodeproj (see CLAUDE.md), so the iOS pass throws
+  # PathNotFoundException -- and the uncaught error kills the process before
+  # the Android writes it already queued are flushed, leaving the icons stale
+  # and colors.xml empty. Leave this off until iOS is regenerated.
+  ios: false
+  # Build-time only -- icon/ is not a bundled asset directory.
+  image_path: "icon/app_icon_square.jpg"
+  # Android 8+ masks the icon to the launcher's shape, and falls back to
+  # shrinking the legacy icon onto a white badge when no adaptive icon is
+  # declared. The foreground is padded so the stopwatch survives a round mask.
+  adaptive_icon_background: "#12101B"
+  adaptive_icon_foreground: "icon/app_icon_foreground.jpg"
   min_sdk_android: 21
 
 flutter:
@@ -38,5 +48,4 @@ flutter:
   # Generates AppLocalizations from lib/l10n/*.arb (see l10n.yaml).
   generate: true
   assets:
-    - assets/app_icon.jpg
     - assets/donate/

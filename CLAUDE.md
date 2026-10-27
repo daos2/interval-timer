@@ -22,7 +22,33 @@ The project folder was named `3-code/` until v1.5.0; it is `source/` now. Nothin
 
 A `flutter build apk` leaves a **Gradle daemon** holding a lock on the project folder, which makes a rename fail with "Permission denied". Stop it with `./gradlew --stop` from `source/android` rather than killing java processes — Android Studio uses the same JBR runtime.
 
-**Store listing:** `fastlane/metadata/android/en-US/` holds `title.txt` (max 50), `short_description.txt` (max 80, single line, **no trailing period**), `full_description.txt` (max 4000, limited HTML) and `changelogs/<versionCode>.txt` (max 500). F-Droid reads these straight from the repo, so a release that bumps versionCode wants a new changelog file beside the others. `images/icon.png` is a **512x512 square** crop of the portrait `source/assets/app_icon.jpg`, centred on the figure and stopwatch so the source card's white rounded corners stay outside the frame; regenerate it rather than scaling the portrait, which would distort it. Still missing for a submission: `images/phoneScreenshots/`, which needs a device.
+**Store listing:** `fastlane/metadata/android/en-US/` holds `title.txt` (max 50), `short_description.txt` (max 80, single line, **no trailing period**), `full_description.txt` (max 4000, limited HTML) and `changelogs/<versionCode>.txt` (max 500). F-Droid reads these straight from the repo, so a release that bumps versionCode wants a new changelog file beside the others. `images/icon.png` is a **512x512 square** crop of the portrait `source/icon/app_icon.jpg`, centred on the figure and stopwatch so the source card's white rounded corners stay outside the frame; regenerate it rather than scaling the portrait, which would distort it. Still missing for a submission: `images/phoneScreenshots/`, which needs a device.
+
+**App icon:** `source/icon/` holds the build-time sources and is deliberately
+*not* a bundled asset directory -- nothing in `lib/` loads them, so declaring
+them under `flutter: assets:` only grew the APK. `app_icon.jpg` is the original
+784x1168 portrait art; the other two are square crops generated from it.
+Regenerate the Android resources with `dart run flutter_launcher_icons` from
+`source/`.
+
+- `app_icon_square.jpg` -> `mipmap-*/ic_launcher.png`, the legacy icon. It must
+  be square: fed the portrait original, the generator preserved the 2:3 aspect,
+  so every density shipped squashed -- the 192x192 slot held a 129x192 image.
+- `app_icon_foreground.jpg` -> `drawable-*/ic_launcher_foreground.png`, paired
+  with `@color/ic_launcher_background` (`#12101B`, the card colour) by
+  `mipmap-anydpi-v26/ic_launcher.xml`. Without an adaptive icon, Android 8+
+  shrinks the legacy one onto a white badge. Android only promises the central
+  66dp circle of the 108dp canvas survives the launcher's mask, so the art is
+  padded until the figure and stopwatch fill 60% of the frame; the sideways
+  padding is the card colour, cross-faded over 40px because flat colour butted
+  against faint lightning leaves a seam.
+- **`ios: false` in the `flutter_launcher_icons:` block is load-bearing.** There
+  is no `ios/Runner.xcodeproj`, so the iOS pass throws `PathNotFoundException`,
+  and the uncaught error kills the process before the Android writes it has
+  already queued are flushed -- the run prints "Successfully generated launcher
+  icons" while leaving the mipmaps untouched and `colors.xml` empty.
+- `mipmap-ldpi/` was deleted: the generator does not write it, so the stale
+  squashed icon would have outlived the fix. Android falls back to mdpi.
 
 `source/` is the only source tree. A second full copy at `4-build/` and an older one at the repo root were deleted in v1.2: they had silently drifted, and the stale copy still carried the old `com.example.interval_timer` application ID, so an APK built from it installed as a *second* app instead of upgrading. Do not reintroduce a parallel project copy.
 

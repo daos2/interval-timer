@@ -18,10 +18,15 @@ its known limitations. This file covers the code.
 ```
 Interval_timer/
 ├── source/        the Flutter project (source + build output)
+│   └── icon/      launcher-icon sources, build-time only (not bundled)
+├── fastlane/      store listing text and icon, read by F-Droid
 ├── 5-releases/    shipped APKs
 ├── logo.jpg       icon design source
 └── logo2.jpg
 ```
+
+The launcher icon is generated from `source/icon/` by `dart run
+flutter_launcher_icons`; see CLAUDE.md before changing that config.
 
 There used to be a second full copy of the project in `4-build/`, plus an older
 one at the root. They drifted: the "source" folder fell behind and still carried

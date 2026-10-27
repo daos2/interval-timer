@@ -1,5 +1,7 @@
 gradle-wrapper.jar
 /.gradle
+# Kotlin 2.x session cache, written on every build.
+/.kotlin/
 /captures/
 /gradlew
 /gradlew.bat

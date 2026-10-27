@@ -41,7 +41,7 @@ class BackupContents {
 abstract final class BackupService {
   /// Bumped only when the archive layout changes incompatibly.
   static const int schemaVersion = 1;
-  static const String appVersion = '1.5.0+6';
+  static const String appVersion = '1.5.1+7';
 
   /// "v1.4.0" -- what the app bar shows. The build number is dropped: it
   /// changes on every store upload and means nothing to a user.

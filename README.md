@@ -7,7 +7,7 @@ with day/week/month charts, and zip backup/restore.
 Everything is stored on the device. No account, no ads, no analytics, and the
 app asks for **no Android permissions**.
 
-**Current version 1.5.0+6** · Application ID `com.intervaltimer.app` ·
+**Current version 1.5.1+7** · Application ID `com.intervaltimer.app` ·
 Android 7.0+ (API 24)
 
 > Translations outside English are machine-produced and have not been reviewed

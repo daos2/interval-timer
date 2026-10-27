@@ -1,0 +1,8 @@
+The app icon is fixed. It was squashed into a 2:3 rectangle at every
+screen density, and Android 8 and newer had no adaptive icon to mask, so
+it drew the old one shrunk onto a white badge. There is now a proper
+square icon, and an adaptive one that keeps the stopwatch whole whatever
+shape your launcher masks it to.
+
+Nothing else changed. Same signing key, so it installs over 1.5.0 and
+keeps your settings and history.

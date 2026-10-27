@@ -4,7 +4,7 @@ A Flutter interval-timer app for HIIT, Tabata and circuit training: configurable
 work/rest intervals, synthesised audio cues, training-time charts, zip
 backup/restore, and an about/donations screen.
 
-Version **1.5.0+6** · Application ID `com.intervaltimer.app` · Android 7.0+ (API 24)
+Version **1.5.1+7** · Application ID `com.intervaltimer.app` · Android 7.0+ (API 24)
 
 Android only in practice: `ios/` holds generated leftovers but no Xcode project,
 so iOS has to be regenerated with `flutter create --platforms=ios .` before it

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
+
 import '../features/settings/settings_screen.dart';
 import '../features/statistics/statistics_screen.dart';
 import '../features/timer/timer_screen.dart';
@@ -22,26 +24,28 @@ class _HomeScreenState extends State<HomeScreen> {
       const StatisticsScreen(),
     ];
 
+    final l = AppLocalizations.of(context);
+
     return Scaffold(
       body: pages[_index],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
         onDestinationSelected: (value) => setState(() => _index = value),
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.timer_outlined),
-            selectedIcon: Icon(Icons.timer),
-            label: 'Timer',
+            icon: const Icon(Icons.timer_outlined),
+            selectedIcon: const Icon(Icons.timer),
+            label: l.navTimer,
           ),
           NavigationDestination(
-            icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: const Icon(Icons.settings_outlined),
+            selectedIcon: const Icon(Icons.settings),
+            label: l.navSettings,
           ),
           NavigationDestination(
-            icon: Icon(Icons.bar_chart_outlined),
-            selectedIcon: Icon(Icons.bar_chart),
-            label: 'Statistics',
+            icon: const Icon(Icons.bar_chart_outlined),
+            selectedIcon: const Icon(Icons.bar_chart),
+            label: l.navStatistics,
           ),
         ],
       ),

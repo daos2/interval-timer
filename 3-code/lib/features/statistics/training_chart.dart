@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
+import '../../l10n/l10n_ext.dart';
 import '../../theme.dart';
 import 'training_totals.dart';
 import 'workout_record.dart';
@@ -91,8 +92,8 @@ class _TrainingChartCardState extends State<TrainingChartCard> {
                 ),
               ),
               const SizedBox(width: 8),
-              const Text('TRAINING TIME',
-                  style: TextStyle(
+              Text(context.l10n.trainingTime,
+                  style: const TextStyle(
                     color: kAccent,
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -196,21 +197,23 @@ class _Headline extends StatelessWidget {
     final seconds =
         bucket == null ? totalSecondsIn(buckets) : bucket.totalSeconds;
 
+    final l = context.l10n;
+
     final String caption;
     if (bucket == null) {
-      caption = '${buckets.length} ${period.noun(buckets.length)}'
-          '  ·  tap a bar for detail';
+      caption = '${l.periodCount(period, buckets.length)}'
+          '  ·  ${l.tapBarForDetail}';
     } else {
       final sessions = bucket.sessionCount;
       caption = '${bucketRangeLabel(bucket)}  ·  '
-          '${sessions == 0 ? 'no training' : '$sessions ${sessions == 1 ? 'session' : 'sessions'}'}';
+          '${sessions == 0 ? l.noTraining : l.sessionsCount(sessions)}';
     }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          humanDuration(seconds),
+          l.duration(seconds),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
@@ -291,7 +294,7 @@ class _PeriodSwitch extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 6),
                     child: Text(
-                      value.buttonLabel,
+                      context.l10n.periodButton(value),
                       style: TextStyle(
                         color: value == period ? kBg : kTextSub,
                         fontSize: 11,
@@ -328,8 +331,8 @@ class _YAxis extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          _Tick(compactDuration(peakSeconds)),
-          _Tick(compactDuration(peakSeconds ~/ 2)),
+          _Tick(context.l10n.durationCompact(peakSeconds)),
+          _Tick(context.l10n.durationCompact(peakSeconds ~/ 2)),
           const _Tick('0'),
         ],
       ),

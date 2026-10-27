@@ -10,20 +10,7 @@ import 'workout_record.dart';
 /// The calendar unit one bar covers.
 enum ChartPeriod { day, week, month }
 
-extension ChartPeriodNames on ChartPeriod {
-  /// Caption on the period switch.
-  String get buttonLabel => switch (this) {
-        ChartPeriod.day => 'DAY',
-        ChartPeriod.week => 'WEEK',
-        ChartPeriod.month => 'MONTH',
-      };
 
-  String noun(int count) => switch (this) {
-        ChartPeriod.day => count == 1 ? 'day' : 'days',
-        ChartPeriod.week => count == 1 ? 'week' : 'weeks',
-        ChartPeriod.month => count == 1 ? 'month' : 'months',
-      };
-}
 
 /// One bar: a calendar period and the training time recorded inside it.
 class TrainingBucket {
@@ -130,28 +117,46 @@ int totalSecondsIn(Iterable<TrainingBucket> buckets) =>
 int peakSecondsIn(Iterable<TrainingBucket> buckets) =>
     buckets.fold<int>(0, (peak, bucket) => max(peak, bucket.totalSeconds));
 
+/// The unit words a duration is built from. Supplied by the UI so this file
+/// stays free of Flutter and of any one language; the composition rules --
+/// which units appear, in what order, when a zero is dropped -- are what is
+/// worth testing, and they are identical in every language the app offers.
+abstract interface class DurationWords {
+  String hour(int n);
+  String minute(int n);
+  String second(int n);
+
+  /// Shown instead of "0 sec" for an empty total.
+  String get none;
+
+  /// Axis-tick forms: "2 h", "1.5 h", "45 m", "30 s".
+  String compactHour(String n);
+  String compactMinute(int n);
+  String compactSecond(int n);
+}
+
 /// "1 h 20 min 5 sec" -- the wording used throughout Statistics.
-String humanDuration(int totalSeconds) {
-  if (totalSeconds <= 0) return '—';
+String humanDuration(int totalSeconds, DurationWords words) {
+  if (totalSeconds <= 0) return words.none;
   final h = totalSeconds ~/ 3600;
   final m = (totalSeconds % 3600) ~/ 60;
   final s = totalSeconds % 60;
   final parts = <String>[];
-  if (h > 0) parts.add('$h h');
-  if (m > 0) parts.add('$m min');
-  if (s > 0) parts.add('$s sec');
+  if (h > 0) parts.add(words.hour(h));
+  if (m > 0) parts.add(words.minute(m));
+  if (s > 0) parts.add(words.second(s));
   return parts.join(' ');
 }
 
 /// Axis-tick sized: "2 h", "1.5 h", "45 m", "30 s".
-String compactDuration(int totalSeconds) {
+String compactDuration(int totalSeconds, DurationWords words) {
   if (totalSeconds <= 0) return '0';
   if (totalSeconds >= 3600) {
     final hours = totalSeconds / 3600;
     return hours >= 10 || hours == hours.roundToDouble()
-        ? '${hours.round()} h'
-        : '${hours.toStringAsFixed(1)} h';
+        ? words.compactHour('${hours.round()}')
+        : words.compactHour(hours.toStringAsFixed(1));
   }
-  if (totalSeconds >= 60) return '${totalSeconds ~/ 60} m';
-  return '$totalSeconds s';
+  if (totalSeconds >= 60) return words.compactMinute(totalSeconds ~/ 60);
+  return words.compactSecond(totalSeconds);
 }

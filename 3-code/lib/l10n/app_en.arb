@@ -1,0 +1,308 @@
+{
+  "@@locale": "en",
+  "actionCancel": "Cancel",
+  "actionCopy": "Copy",
+  "actionNewSession": "NEW SESSION",
+  "actionPause": "PAUSE",
+  "actionReplace": "Replace",
+  "actionReset": "RESET",
+  "actionResume": "RESUME",
+  "actionStart": "START",
+  "addressCopied": "{name} address copied",
+  "@addressCopied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "backedUpOn": "Backed up {date}{version}:",
+  "@backedUpOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "backupContents": "Backup contents:",
+  "backupReadFailed": "Could not read that backup: {error}",
+  "@backupReadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupRestored": "{count, plural, =1{Restored 1 workout and your settings.} other{Restored {count} workouts and your settings.}}",
+  "@backupRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSaveFailed": "Could not save the backup: {error}",
+  "@backupSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupSaved": "{count, plural, =1{Backup saved — 1 workout and your settings.} other{Backup saved — {count} workouts and your settings.}}",
+  "@backupSaved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSub": "Save settings and workout history to a .zip file, or restore them from one",
+  "bulletAllSettings": "• All app settings",
+  "bulletWorkouts": "{count, plural, =1{• 1 workout} other{• {count} workouts}}",
+  "@bulletWorkouts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chainBitcoin": "Bitcoin network",
+  "completedLabel": "Completed",
+  "daysCount": "{count, plural, =1{1 day} other{{count} days}}",
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dialogChooseBackup": "Choose an Interval Timer backup",
+  "dialogSaveBackup": "Save Interval Timer backup",
+  "done1": "Classic fanfare",
+  "done2": "Rising fanfare",
+  "done3": "Bright finale",
+  "doneFanfareSub": "Plays at the end of all periods — choose one of 3 fanfares",
+  "durCompactHour": "{n} h",
+  "@durCompactHour": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "durCompactMin": "{n} m",
+  "@durCompactMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durCompactSec": "{n} s",
+  "@durCompactSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durHour": "{n} h",
+  "@durHour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durMin": "{n} min",
+  "@durMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durNone": "—",
+  "durSec": "{n} sec",
+  "@durSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "exportBackup": "Export backup",
+  "exportCancelled": "Export cancelled.",
+  "exportSubtitle": "Save {count, plural, =1{your settings and 1 workout to a .zip file} other{your settings and {count} workouts to a .zip file}}",
+  "@exportSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "exportSubtitleEmpty": "Save your settings to a .zip file",
+  "importBackup": "Import backup",
+  "importBackupSub": "Replace settings and history from a .zip file",
+  "importCancelled": "Import cancelled.",
+  "infoBadgeSemantics": "About and support",
+  "infoTitle": "About & Support",
+  "keepScreenOn": "Keep screen on",
+  "keepScreenOnSub": "Prevent display sleep while timer is running",
+  "labelFrequency": "FREQUENCY",
+  "labelRestInterval": "REST INTERVAL",
+  "labelSets": "SETS",
+  "labelWorkoutInterval": "WORKOUT INTERVAL",
+  "languageSub": "Choose the app language, or follow the system setting",
+  "languageSystem": "System default",
+  "lastWeek": "Last week",
+  "monthsCount": "{count, plural, =1{1 month} other{{count} months}}",
+  "@monthsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navSettings": "Settings",
+  "navStatistics": "Statistics",
+  "navTimer": "Timer",
+  "networkWarning": "Send only on the selected network. Ethereum and BNB Chain share one address, so the network you send on is what decides where the funds land.",
+  "noTraining": "no training",
+  "noWorkoutsYet": "No workouts yet",
+  "overview": "OVERVIEW",
+  "periodDay": "DAY",
+  "periodMonth": "MONTH",
+  "periodWeek": "WEEK",
+  "prestartInstant": "instant",
+  "prestartOff": "Off",
+  "prestartSub": "Countdown before the first interval — set 0 to start instantly",
+  "progressBar": "Progress bar",
+  "progressBarSub": "Show or hide total completion progress",
+  "purposeBullet1": "Set the work interval, rest, sets and tick frequency, then start. Audio cues mark every tick and every change of phase, so the phone can stay in your pocket.",
+  "purposeBullet2": "The screen stays awake while a session runs, and a countdown gives you time to get into position.",
+  "purposeBullet3": "Finished sessions are recorded. Statistics shows your totals, streaks and a bar chart of training time by day, week or month.",
+  "purposeBullet4": "Everything is stored on your device. Settings and history can be exported to a backup file and restored later.",
+  "purposeIntro": "Interval Timer runs work-and-rest workouts — HIIT, circuits, stretching, breathing drills — so you can keep your eyes off the screen and your hands free.",
+  "qrSemantics": "{name} donation QR code",
+  "@qrSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "recordDetail": "Units {units}  ·  Rest {rest}s  ·  Sets {sets}  ·  Freq {freq}s",
+  "@recordDetail": {
+    "placeholders": {
+      "units": {
+        "type": "int"
+      },
+      "rest": {
+        "type": "int"
+      },
+      "sets": {
+        "type": "int"
+      },
+      "freq": {
+        "type": "String"
+      }
+    }
+  },
+  "replaceWarning": "{count, plural, =1{This replaces your current settings and 1 saved workout. That cannot be undone.} other{This replaces your current settings and {count} saved workouts. That cannot be undone.}}",
+  "@replaceWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "replaceWarningEmpty": "This replaces your current settings. You have no saved workouts to lose.",
+  "restoreDialogTitle": "Restore this backup?",
+  "sectionBackup": "BACKUP",
+  "sectionDoneFanfare": "DONE FANFARE",
+  "sectionGeneral": "GENERAL",
+  "sectionLanguage": "LANGUAGE",
+  "sectionPrestart": "PRESTART",
+  "sectionTickSound": "TICK SOUND",
+  "sessionsCount": "{count, plural, =1{1 session} other{{count} sessions}}",
+  "@sessionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setWord": "Set",
+  "settingsTitle": "Settings",
+  "statisticsTitle": "Statistics",
+  "statusCompleted": "Completed",
+  "statusPaused": "Paused",
+  "statusReady": "Ready",
+  "statusRest": "Rest",
+  "statusStartIn": "Start in",
+  "statusWorkout": "Workout",
+  "subGetReady": "Get ready",
+  "subGreatJob": "Great job!",
+  "subSetProgress": "Set {current}/{total} • intervals left",
+  "@subSetProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "subTapResume": "Tap resume to continue",
+  "subUntilNext": "Until next period",
+  "supportDevelopment": "SUPPORT DEVELOPMENT",
+  "supportIntro": "The app is free, has no ads and collects nothing. If it is useful to you, a tip is welcome — pick a network and scan or copy the address.",
+  "tapAnywhereToResume": "Tap anywhere to resume",
+  "tapBarForDetail": "tap a bar for detail",
+  "thisWeek": "This week",
+  "tick1": "Soft click",
+  "tick2": "Double click",
+  "tick3": "Alert click",
+  "tick4": "Punchy click",
+  "tick5": "Triple click",
+  "tick6": "Bright click",
+  "tickSoundSub": "Plays at every workout unit — choose one of 6 short clicks",
+  "timerSignal": "Timer signal",
+  "timerSignalSub": "Play signal at every workout unit",
+  "totalProgress": "Total progress {percent}%",
+  "@totalProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "totalSuffix": "{seconds} sec total",
+  "@totalSuffix": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingTime": "TRAINING TIME",
+  "unitIntervals": "intervals",
+  "unitSec": "sec",
+  "unitUnits": "units",
+  "valueDone": "Done",
+  "weeksCount": "{count, plural, =1{1 week} other{{count} weeks}}",
+  "@weeksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "whatThisAppIsFor": "What this app is for"
+}

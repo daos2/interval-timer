@@ -4,6 +4,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:interval_timer/features/statistics/training_totals.dart';
 import 'package:interval_timer/features/statistics/workout_record.dart';
 
+/// English wording, so these tests keep asserting the composition rules --
+/// which units show, in what order -- rather than any one translation.
+class _EnWords implements DurationWords {
+  const _EnWords();
+  @override
+  String hour(int n) => '$n h';
+  @override
+  String minute(int n) => '$n min';
+  @override
+  String second(int n) => '$n sec';
+  @override
+  String get none => '—';
+  @override
+  String compactHour(String n) => '$n h';
+  @override
+  String compactMinute(int n) => '$n m';
+  @override
+  String compactSecond(int n) => '$n s';
+}
+
+const _w = _EnWords();
+
 /// 2026-09-21 is a Monday, so "today" is also the start of its week.
 final _now = DateTime(2026, 9, 21, 19, 30);
 
@@ -224,29 +246,26 @@ void main() {
 
   group('wording', () {
     test('humanDuration matches the Statistics phrasing', () {
-      expect(humanDuration(0), '—');
-      expect(humanDuration(-5), '—');
-      expect(humanDuration(45), '45 sec');
-      expect(humanDuration(412), '6 min 52 sec');
-      expect(humanDuration(3600), '1 h');
-      expect(humanDuration(3725), '1 h 2 min 5 sec');
+      expect(humanDuration(0, _w), '—');
+      expect(humanDuration(-5, _w), '—');
+      expect(humanDuration(45, _w), '45 sec');
+      expect(humanDuration(412, _w), '6 min 52 sec');
+      expect(humanDuration(3600, _w), '1 h');
+      expect(humanDuration(3725, _w), '1 h 2 min 5 sec');
     });
 
     test('compactDuration fits an axis tick', () {
-      expect(compactDuration(0), '0');
-      expect(compactDuration(30), '30 s');
-      expect(compactDuration(90), '1 m');
-      expect(compactDuration(3600), '1 h');
-      expect(compactDuration(5400), '1.5 h');
-      expect(compactDuration(36000), '10 h');
+      expect(compactDuration(0, _w), '0');
+      expect(compactDuration(30, _w), '30 s');
+      expect(compactDuration(90, _w), '1 m');
+      expect(compactDuration(3600, _w), '1 h');
+      expect(compactDuration(5400, _w), '1.5 h');
+      expect(compactDuration(36000, _w), '10 h');
     });
 
-    test('period nouns are singular for one bucket', () {
-      expect(ChartPeriod.day.noun(1), 'day');
-      expect(ChartPeriod.day.noun(9), 'days');
-      expect(ChartPeriod.week.noun(1), 'week');
-      expect(ChartPeriod.month.noun(3), 'months');
-      expect(ChartPeriod.month.buttonLabel, 'MONTH');
+    test('an empty total reads as a dash, not "0 sec"', () {
+      expect(humanDuration(0, _w), '—');
+      expect(compactDuration(0, _w), '0');
     });
   });
 }

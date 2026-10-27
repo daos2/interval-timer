@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../l10n/l10n_ext.dart';
 import '../../theme.dart';
 import '../backup/backup_service.dart';
 import '../timer/timer_controller.dart';
@@ -25,6 +26,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.watch<TimerController>();
     final settings = controller.settings;
+    final l = context.l10n;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
@@ -34,9 +36,9 @@ class SettingsScreen extends StatelessWidget {
           backgroundColor: _kBg,
           elevation: 0,
           centerTitle: true,
-          title: const Text(
-            'Settings',
-            style: TextStyle(
+          title: Text(
+            l.settingsTitle,
+            style: const TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w800,
               color: _kTextPrimary,
@@ -49,29 +51,29 @@ class SettingsScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
           children: [
             // ── General section ────────────────────────────────────────────
-            const _SectionLabel(label: 'GENERAL'),
+            _SectionLabel(label: l.sectionGeneral),
             const SizedBox(height: 8),
             _SettingsCard(
               children: [
                 _DarkSwitchTile(
-                  title: 'Keep screen on',
-                  subtitle: 'Prevent display sleep while timer is running',
+                  title: l.keepScreenOn,
+                  subtitle: l.keepScreenOnSub,
                   value: settings.keepScreenOn,
                   onChanged: (v) => controller
                       .updateSettings(settings.copyWith(keepScreenOn: v)),
                 ),
                 _CardDivider(),
                 _DarkSwitchTile(
-                  title: 'Progress bar',
-                  subtitle: 'Show or hide total completion progress',
+                  title: l.progressBar,
+                  subtitle: l.progressBarSub,
                   value: settings.showProgressBar,
                   onChanged: (v) => controller
                       .updateSettings(settings.copyWith(showProgressBar: v)),
                 ),
                 _CardDivider(),
                 _DarkSwitchTile(
-                  title: 'Timer signal',
-                  subtitle: 'Play signal at every workout unit',
+                  title: l.timerSignal,
+                  subtitle: l.timerSignalSub,
                   value: settings.timerSignalEnabled,
                   onChanged: (v) => controller
                       .updateSettings(settings.copyWith(timerSignalEnabled: v)),
@@ -81,13 +83,13 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // ── Prestart section ───────────────────────────────────────────
-            const _SectionLabel(label: 'PRESTART'),
+            _SectionLabel(label: l.sectionPrestart),
             const SizedBox(height: 4),
-            const Padding(
-              padding: EdgeInsets.only(left: 4, bottom: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 4, bottom: 10),
               child: Text(
-                'Countdown before the first interval — set 0 to start instantly',
-                style: TextStyle(color: _kTextSub, fontSize: 12),
+                l.prestartSub,
+                style: const TextStyle(color: _kTextSub, fontSize: 12),
               ),
             ),
             _SettingsCard(
@@ -102,76 +104,92 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // ── Tick sound section ─────────────────────────────────────────
-            const _SectionLabel(label: 'TICK SOUND'),
+            _SectionLabel(label: l.sectionTickSound),
             const SizedBox(height: 4),
-            const Padding(
-              padding: EdgeInsets.only(left: 4, bottom: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 4, bottom: 10),
               child: Text(
-                'Plays at every workout unit — choose one of 6 short clicks',
-                style: TextStyle(color: _kTextSub, fontSize: 12),
+                l.tickSoundSub,
+                style: const TextStyle(color: _kTextSub, fontSize: 12),
               ),
             ),
             _SettingsCard(
               children: [
-                for (final entry
-                    in TimerController.tickSoundOptions.entries) ...[
+                for (final id in TimerController.tickSoundIds) ...[
                   _SoundRadioTile(
-                    id: entry.key,
-                    label: entry.value,
+                    id: id,
+                    label: l.soundName(id),
                     groupValue: settings.tickSoundId,
                     accentColor: _kAccent,
-                    onSelect: (id) => controller.previewTickSound(id),
-                    onPreview: () =>
-                        controller.previewTickSound(entry.key),
+                    onSelect: (value) => controller.previewTickSound(value),
+                    onPreview: () => controller.previewTickSound(id),
                   ),
-                  if (entry.key !=
-                      TimerController.tickSoundOptions.keys.last)
-                    _CardDivider(),
+                  if (id != TimerController.tickSoundIds.last) _CardDivider(),
                 ],
               ],
             ),
             const SizedBox(height: 20),
 
             // ── Done fanfare section ───────────────────────────────────────
-            const _SectionLabel(label: 'DONE FANFARE'),
+            _SectionLabel(label: l.sectionDoneFanfare),
             const SizedBox(height: 4),
-            const Padding(
-              padding: EdgeInsets.only(left: 4, bottom: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 4, bottom: 10),
               child: Text(
-                'Plays at the end of all periods — choose one of 3 fanfares',
-                style: TextStyle(color: _kTextSub, fontSize: 12),
+                l.doneFanfareSub,
+                style: const TextStyle(color: _kTextSub, fontSize: 12),
               ),
             ),
             _SettingsCard(
               children: [
-                for (final entry
-                    in TimerController.doneSoundOptions.entries) ...[
+                for (final id in TimerController.doneSoundIds) ...[
                   _SoundRadioTile(
-                    id: entry.key,
-                    label: entry.value,
+                    id: id,
+                    label: l.soundName(id),
                     groupValue: settings.doneSoundId,
                     accentColor: const Color(0xFF9D4EDD),
-                    onSelect: (id) => controller.previewDoneSound(id),
-                    onPreview: () =>
-                        controller.previewDoneSound(entry.key),
+                    onSelect: (value) => controller.previewDoneSound(value),
+                    onPreview: () => controller.previewDoneSound(id),
                   ),
-                  if (entry.key !=
-                      TimerController.doneSoundOptions.keys.last)
-                    _CardDivider(),
+                  if (id != TimerController.doneSoundIds.last) _CardDivider(),
                 ],
               ],
             ),
             const SizedBox(height: 20),
 
             // ── Backup section ─────────────────────────────────────────────
-            const _SectionLabel(label: 'BACKUP'),
+            _SectionLabel(label: l.sectionLanguage),
             const SizedBox(height: 4),
-            const Padding(
-              padding: EdgeInsets.only(left: 4, bottom: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 4, bottom: 10),
               child: Text(
-                'Save settings and workout history to a .zip file, or restore '
-                'them from one',
-                style: TextStyle(color: _kTextSub, fontSize: 12),
+                l.languageSub,
+                style: const TextStyle(color: _kTextSub, fontSize: 12),
+              ),
+            ),
+            _SettingsCard(
+              children: [
+                for (final code in _languageCodes) ...[
+                  _LanguageTile(
+                    code: code,
+                    groupValue: settings.languageCode,
+                    onSelect: (value) => controller.updateSettings(
+                        settings.copyWith(languageCode: value)),
+                  ),
+                  if (code != _languageCodes.last) _CardDivider(),
+                ],
+              ],
+            ),
+            const SizedBox(height: 20),
+
+            // ── Backup section ─────────────────────────────────────────────
+            _SectionLabel(label: l.sectionBackup),
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.only(left: 4, bottom: 10),
+              child: Text(
+                l.backupSub,
+                style: const TextStyle(color: _kTextSub, fontSize: 12),
               ),
             ),
             const _BackupSection(),
@@ -400,7 +418,7 @@ class _PrestartStepper extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  seconds == 0 ? 'Off' : '$seconds',
+                  seconds == 0 ? context.l10n.prestartOff : '$seconds',
                   style: const TextStyle(
                     color: _kTextPrimary,
                     fontSize: 28,
@@ -410,7 +428,9 @@ class _PrestartStepper extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  seconds == 0 ? 'instant' : 'sec',
+                  seconds == 0
+                      ? context.l10n.prestartInstant
+                      : context.l10n.unitSec,
                   style: const TextStyle(
                     color: _kTextSub,
                     fontSize: 12,
@@ -506,6 +526,7 @@ class _BackupSectionState extends State<_BackupSection> {
 
   Future<void> _export() async {
     if (_busy) return;
+    final l = context.l10n;
     setState(() => _busy = true);
     try {
       final controller = context.read<TimerController>();
@@ -513,20 +534,19 @@ class _BackupSectionState extends State<_BackupSection> {
       final count = controller.history.length;
 
       final uri = await FilePicker.saveFile(
-        dialogTitle: 'Save Interval Timer backup',
+        dialogTitle: l.dialogSaveBackup,
         fileName: BackupService.suggestedFileName(DateTime.now()),
         bytes: bytes,
         mimeType: 'application/zip',
       );
 
       if (uri == null) {
-        _toast('Export cancelled.');
+        _toast(l.exportCancelled);
         return;
       }
-      _toast('Backup saved — $count '
-          '${count == 1 ? 'workout' : 'workouts'} and your settings.');
+      _toast(l.backupSaved(count));
     } catch (e) {
-      _toast('Could not save the backup: $e', error: true);
+      _toast(l.backupSaveFailed('$e'), error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -534,15 +554,16 @@ class _BackupSectionState extends State<_BackupSection> {
 
   Future<void> _import() async {
     if (_busy) return;
+    final l = context.l10n;
     setState(() => _busy = true);
     try {
       final picked = await FilePicker.pickFile(
-        dialogTitle: 'Choose an Interval Timer backup',
+        dialogTitle: l.dialogChooseBackup,
         type: FileType.custom,
         allowedExtensions: const ['zip'],
       );
       if (picked == null) {
-        _toast('Import cancelled.');
+        _toast(l.importCancelled);
         return;
       }
 
@@ -553,25 +574,25 @@ class _BackupSectionState extends State<_BackupSection> {
       if (!mounted) return;
       final confirmed = await _confirmRestore(preview);
       if (confirmed != true) {
-        _toast('Import cancelled.');
+        _toast(l.importCancelled);
         return;
       }
 
       if (!mounted) return;
       await context.read<TimerController>().restoreBackup(bytes);
       final count = preview.history.length;
-      _toast('Restored $count '
-          '${count == 1 ? 'workout' : 'workouts'} and your settings.');
+      _toast(l.backupRestored(count));
     } on BackupFormatException catch (e) {
       _toast(e.message, error: true);
     } catch (e) {
-      _toast('Could not read that backup: $e', error: true);
+      _toast(l.backupReadFailed('$e'), error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
   }
 
   Future<bool?> _confirmRestore(BackupContents preview) {
+    final l = context.l10n;
     final current = context.read<TimerController>().history.length;
     final incoming = preview.history.length;
     final exported = preview.exportedAt;
@@ -580,33 +601,32 @@ class _BackupSectionState extends State<_BackupSection> {
       context: context,
       builder: (dialogContext) => AlertDialog(
         backgroundColor: _kSurface,
-        title: const Text('Restore this backup?',
-            style: TextStyle(color: _kTextPrimary, fontSize: 18)),
+        title: Text(l.restoreDialogTitle,
+            style: const TextStyle(color: _kTextPrimary, fontSize: 18)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               exported == null
-                  ? 'Backup contents:'
-                  : 'Backed up ${DateFormat('d MMM yyyy, HH:mm').format(exported)}'
-                      '${preview.appVersion == null ? '' : ' (v${preview.appVersion})'}:',
+                  ? l.backupContents
+                  : l.backedUpOn(
+                      DateFormat('d MMM yyyy, HH:mm').format(exported),
+                      preview.appVersion == null
+                          ? ''
+                          : ' (v${preview.appVersion})'),
               style: const TextStyle(color: _kTextSub, fontSize: 13),
             ),
             const SizedBox(height: 10),
             Text(
-              '• $incoming ${incoming == 1 ? 'workout' : 'workouts'}\n'
-              '• All app settings',
+              '${l.bulletWorkouts(incoming)}\n${l.bulletAllSettings}',
               style: const TextStyle(color: _kTextPrimary, fontSize: 14),
             ),
             const SizedBox(height: 14),
             Text(
               current == 0
-                  ? 'This replaces your current settings. You have no saved '
-                      'workouts to lose.'
-                  : 'This replaces your current settings and all $current '
-                      'saved ${current == 1 ? 'workout' : 'workouts'}. '
-                      'That cannot be undone.',
+                  ? l.replaceWarningEmpty
+                  : l.replaceWarning(current),
               style: const TextStyle(color: kDanger, fontSize: 13),
             ),
           ],
@@ -614,12 +634,14 @@ class _BackupSectionState extends State<_BackupSection> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(false),
-            child: const Text('Cancel', style: TextStyle(color: _kTextSub)),
+            child: Text(l.actionCancel,
+                style: const TextStyle(color: _kTextSub)),
           ),
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(true),
-            child: const Text('Replace',
-                style: TextStyle(color: kDanger, fontWeight: FontWeight.w700)),
+            child: Text(l.actionReplace,
+                style: const TextStyle(
+                    color: kDanger, fontWeight: FontWeight.w700)),
           ),
         ],
       ),
@@ -629,16 +651,16 @@ class _BackupSectionState extends State<_BackupSection> {
   @override
   Widget build(BuildContext context) {
     final workouts = context.watch<TimerController>().history.length;
+    final l = context.l10n;
 
     return _SettingsCard(
       children: [
         _BackupTile(
           icon: Icons.save_alt_rounded,
-          title: 'Export backup',
+          title: l.exportBackup,
           subtitle: workouts == 0
-              ? 'Save your settings to a .zip file'
-              : 'Save your settings and $workouts '
-                  '${workouts == 1 ? 'workout' : 'workouts'} to a .zip file',
+              ? l.exportSubtitleEmpty
+              : l.exportSubtitle(workouts),
           accentColor: _kAccent,
           busy: _busy,
           onTap: _export,
@@ -646,8 +668,8 @@ class _BackupSectionState extends State<_BackupSection> {
         _CardDivider(),
         _BackupTile(
           icon: Icons.settings_backup_restore_rounded,
-          title: 'Import backup',
-          subtitle: 'Replace settings and history from a .zip file',
+          title: l.importBackup,
+          subtitle: l.importBackupSub,
           accentColor: const Color(0xFFFFA62B),
           busy: _busy,
           onTap: _import,
@@ -719,6 +741,77 @@ class _BackupTile extends StatelessWidget {
                   color: _kTextSub.withValues(alpha: 0.6), size: 20),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Language picker ────────────────────────────────────────────────────────
+
+/// '' is "follow the system"; the rest are the translated locales.
+const List<String> _languageCodes = <String>[
+  '', ...AppSettings.supportedLanguageCodes,
+];
+
+/// Languages are listed in their own language, never translated: someone who
+/// has the app stuck in a language they cannot read still needs to find their
+/// own on this list.
+const Map<String, String> _languageEndonyms = <String, String>{
+  'en': 'English',
+  'de': 'Deutsch',
+  'fr': 'Français',
+  'es': 'Español',
+  'ru': 'Русский',
+  'ka': 'ქართული',
+};
+
+class _LanguageTile extends StatelessWidget {
+  const _LanguageTile({
+    required this.code,
+    required this.groupValue,
+    required this.onSelect,
+  });
+
+  final String code;
+  final String groupValue;
+  final ValueChanged<String> onSelect;
+
+  @override
+  Widget build(BuildContext context) {
+    final selected = code == groupValue;
+    final name = code.isEmpty
+        ? context.l10n.languageSystem
+        : _languageEndonyms[code] ?? code;
+
+    return InkWell(
+      onTap: () {
+        HapticFeedback.selectionClick();
+        onSelect(code);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        child: Row(
+          children: [
+            Icon(
+              selected
+                  ? Icons.radio_button_checked
+                  : Icons.radio_button_unchecked,
+              color: selected ? _kAccent : _kTextSub,
+              size: 20,
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                name,
+                style: TextStyle(
+                  color: selected ? _kAccent : _kTextPrimary,
+                  fontSize: 15,
+                  fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

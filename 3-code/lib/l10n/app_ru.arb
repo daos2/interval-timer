@@ -1,0 +1,308 @@
+{
+  "@@locale": "ru",
+  "actionCancel": "Отмена",
+  "actionCopy": "Копировать",
+  "actionNewSession": "НОВАЯ СЕССИЯ",
+  "actionPause": "ПАУЗА",
+  "actionReplace": "Заменить",
+  "actionReset": "СБРОС",
+  "actionResume": "ПРОДОЛЖИТЬ",
+  "actionStart": "СТАРТ",
+  "addressCopied": "Адрес {name} скопирован",
+  "@addressCopied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "backedUpOn": "Создано {date}{version}:",
+  "@backedUpOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "backupContents": "Содержимое копии:",
+  "backupReadFailed": "Не удалось прочитать копию: {error}",
+  "@backupReadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupRestored": "{count, plural, one{Восстановлена {count} тренировка и настройки.} few{Восстановлено {count} тренировки и настройки.} many{Восстановлено {count} тренировок и настройки.} other{Восстановлено {count} тренировки и настройки.}}",
+  "@backupRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSaveFailed": "Не удалось сохранить копию: {error}",
+  "@backupSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupSaved": "{count, plural, one{Копия сохранена — {count} тренировка и настройки.} few{Копия сохранена — {count} тренировки и настройки.} many{Копия сохранена — {count} тренировок и настройки.} other{Копия сохранена — {count} тренировки и настройки.}}",
+  "@backupSaved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSub": "Сохраните настройки и историю в .zip или восстановите их из файла",
+  "bulletAllSettings": "• Все настройки приложения",
+  "bulletWorkouts": "{count, plural, one{• {count} тренировка} few{• {count} тренировки} many{• {count} тренировок} other{• {count} тренировки}}",
+  "@bulletWorkouts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chainBitcoin": "Сеть Bitcoin",
+  "completedLabel": "Завершено",
+  "daysCount": "{count, plural, one{{count} день} few{{count} дня} many{{count} дней} other{{count} дня}}",
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dialogChooseBackup": "Выберите копию Interval Timer",
+  "dialogSaveBackup": "Сохранить копию Interval Timer",
+  "done1": "Классический сигнал",
+  "done2": "Восходящий сигнал",
+  "done3": "Яркий финал",
+  "doneFanfareSub": "Звучит в конце всех периодов — выберите один из 3 сигналов",
+  "durCompactHour": "{n} ч",
+  "@durCompactHour": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "durCompactMin": "{n} м",
+  "@durCompactMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durCompactSec": "{n} с",
+  "@durCompactSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durHour": "{n} ч",
+  "@durHour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durMin": "{n} мин",
+  "@durMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durNone": "—",
+  "durSec": "{n} сек",
+  "@durSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "exportBackup": "Экспорт копии",
+  "exportCancelled": "Экспорт отменён.",
+  "exportSubtitle": "Save {count, plural, one{настройки и {count} тренировку в .zip} few{настройки и {count} тренировки в .zip} many{настройки и {count} тренировок в .zip} other{настройки и {count} тренировки в .zip}}",
+  "@exportSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "exportSubtitleEmpty": "Сохранить настройки в .zip",
+  "importBackup": "Импорт копии",
+  "importBackupSub": "Заменить настройки и историю из .zip",
+  "importCancelled": "Импорт отменён.",
+  "infoBadgeSemantics": "О программе и поддержка",
+  "infoTitle": "О программе и поддержка",
+  "keepScreenOn": "Не выключать экран",
+  "keepScreenOnSub": "Экран не гаснет, пока работает таймер",
+  "labelFrequency": "ЧАСТОТА",
+  "labelRestInterval": "ИНТЕРВАЛ ОТДЫХА",
+  "labelSets": "ПОДХОДЫ",
+  "labelWorkoutInterval": "ИНТЕРВАЛ РАБОТЫ",
+  "languageSub": "Выберите язык приложения или следуйте системной настройке",
+  "languageSystem": "Системный",
+  "lastWeek": "Прошлая неделя",
+  "monthsCount": "{count, plural, one{{count} месяц} few{{count} месяца} many{{count} месяцев} other{{count} месяца}}",
+  "@monthsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navSettings": "Настройки",
+  "navStatistics": "Статистика",
+  "navTimer": "Таймер",
+  "networkWarning": "Отправляйте только в выбранной сети. Ethereum и BNB Chain используют один адрес, и именно сеть определяет, куда придут средства.",
+  "noTraining": "без тренировок",
+  "noWorkoutsYet": "Пока нет тренировок",
+  "overview": "ОБЗОР",
+  "periodDay": "ДЕНЬ",
+  "periodMonth": "МЕСЯЦ",
+  "periodWeek": "НЕДЕЛЯ",
+  "prestartInstant": "сразу",
+  "prestartOff": "Выкл",
+  "prestartSub": "Отсчёт перед первым интервалом — 0 запускает сразу",
+  "progressBar": "Полоса прогресса",
+  "progressBarSub": "Показывать общий прогресс",
+  "purposeBullet1": "Задайте работу, отдых, подходы и частоту — и начните. Звуки отмечают каждый тик и смену фазы, телефон может остаться в кармане.",
+  "purposeBullet2": "Экран не гаснет во время сессии, а отсчёт даёт время занять позицию.",
+  "purposeBullet3": "Завершённые сессии записываются. Статистика показывает итоги, серии и график по дням, неделям или месяцам.",
+  "purposeBullet4": "Всё хранится на устройстве. Настройки и историю можно выгрузить в файл и восстановить.",
+  "purposeIntro": "Interval Timer ведёт тренировки «работа-отдых» — HIIT, круговые, растяжка, дыхание — чтобы не смотреть на экран и держать руки свободными.",
+  "qrSemantics": "QR-код для доната {name}",
+  "@qrSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "recordDetail": "Ед. {units}  ·  Отдых {rest}с  ·  Подходы {sets}  ·  Частота {freq}с",
+  "@recordDetail": {
+    "placeholders": {
+      "units": {
+        "type": "int"
+      },
+      "rest": {
+        "type": "int"
+      },
+      "sets": {
+        "type": "int"
+      },
+      "freq": {
+        "type": "String"
+      }
+    }
+  },
+  "replaceWarning": "{count, plural, one{Это заменит настройки и {count} сохранённую тренировку. Отменить нельзя.} few{Это заменит настройки и {count} сохранённые тренировки. Отменить нельзя.} many{Это заменит настройки и {count} сохранённых тренировок. Отменить нельзя.} other{Это заменит настройки и {count} сохранённые тренировки. Отменить нельзя.}}",
+  "@replaceWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "replaceWarningEmpty": "Это заменит текущие настройки. Сохранённых тренировок нет.",
+  "restoreDialogTitle": "Восстановить эту копию?",
+  "sectionBackup": "РЕЗЕРВНАЯ КОПИЯ",
+  "sectionDoneFanfare": "ФИНАЛЬНЫЙ СИГНАЛ",
+  "sectionGeneral": "ОБЩИЕ",
+  "sectionLanguage": "ЯЗЫК",
+  "sectionPrestart": "ПРЕДСТАРТ",
+  "sectionTickSound": "ЗВУК ТИКА",
+  "sessionsCount": "{count, plural, one{{count} сессия} few{{count} сессии} many{{count} сессий} other{{count} сессии}}",
+  "@sessionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setWord": "Подход",
+  "settingsTitle": "Настройки",
+  "statisticsTitle": "Статистика",
+  "statusCompleted": "Завершено",
+  "statusPaused": "Пауза",
+  "statusReady": "Готово",
+  "statusRest": "Отдых",
+  "statusStartIn": "Старт через",
+  "statusWorkout": "Работа",
+  "subGetReady": "Приготовьтесь",
+  "subGreatJob": "Отлично!",
+  "subSetProgress": "Подход {current}/{total} • осталось интервалов",
+  "@subSetProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "subTapResume": "Нажмите «Продолжить»",
+  "subUntilNext": "До следующего периода",
+  "supportDevelopment": "ПОДДЕРЖАТЬ РАЗРАБОТКУ",
+  "supportIntro": "Приложение бесплатное, без рекламы и ничего не собирает. Если оно полезно, буду рад донату — выберите сеть и отсканируйте или скопируйте адрес.",
+  "tapAnywhereToResume": "Коснитесь экрана, чтобы продолжить",
+  "tapBarForDetail": "нажмите на столбец для деталей",
+  "thisWeek": "Эта неделя",
+  "tick1": "Мягкий щелчок",
+  "tick2": "Двойной щелчок",
+  "tick3": "Сигнальный щелчок",
+  "tick4": "Резкий щелчок",
+  "tick5": "Тройной щелчок",
+  "tick6": "Яркий щелчок",
+  "tickSoundSub": "Звучит на каждой единице работы — выберите один из 6 щелчков",
+  "timerSignal": "Звуковой сигнал",
+  "timerSignalSub": "Звук на каждой единице работы",
+  "totalProgress": "Общий прогресс {percent}%",
+  "@totalProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "totalSuffix": "всего {seconds} сек",
+  "@totalSuffix": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingTime": "ВРЕМЯ ТРЕНИРОВОК",
+  "unitIntervals": "интервалов",
+  "unitSec": "сек",
+  "unitUnits": "ед.",
+  "valueDone": "Готово",
+  "weeksCount": "{count, plural, one{{count} неделя} few{{count} недели} many{{count} недель} other{{count} недели}}",
+  "@weeksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "whatThisAppIsFor": "Для чего это приложение"
+}

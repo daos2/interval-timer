@@ -1,0 +1,308 @@
+{
+  "@@locale": "ka",
+  "actionCancel": "გაუქმება",
+  "actionCopy": "კოპირება",
+  "actionNewSession": "ახალი სესია",
+  "actionPause": "პაუზა",
+  "actionReplace": "ჩანაცვლება",
+  "actionReset": "გადატვირთვა",
+  "actionResume": "გაგრძელება",
+  "actionStart": "დაწყება",
+  "addressCopied": "{name}-ის მისამართი დაკოპირდა",
+  "@addressCopied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "backedUpOn": "შექმნილია {date}{version}:",
+  "@backedUpOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "backupContents": "ასლის შიგთავსი:",
+  "backupReadFailed": "ასლის წაკითხვა ვერ მოხერხდა: {error}",
+  "@backupReadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupRestored": "{count, plural, one{აღდგენილია {count} ვარჯიში და პარამეტრები.} other{აღდგენილია {count} ვარჯიში და პარამეტრები.}}",
+  "@backupRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSaveFailed": "ასლის შენახვა ვერ მოხერხდა: {error}",
+  "@backupSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupSaved": "{count, plural, one{ასლი შენახულია — {count} ვარჯიში და პარამეტრები.} other{ასლი შენახულია — {count} ვარჯიში და პარამეტრები.}}",
+  "@backupSaved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSub": "შეინახეთ პარამეტრები და ისტორია .zip ფაილში ან აღადგინეთ",
+  "bulletAllSettings": "• ყველა პარამეტრი",
+  "bulletWorkouts": "{count, plural, one{• {count} ვარჯიში} other{• {count} ვარჯიში}}",
+  "@bulletWorkouts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chainBitcoin": "Bitcoin-ის ქსელი",
+  "completedLabel": "დასრულებული",
+  "daysCount": "{count, plural, one{{count} დღე} other{{count} დღე}}",
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dialogChooseBackup": "აირჩიეთ Interval Timer-ის ასლი",
+  "dialogSaveBackup": "Interval Timer-ის ასლის შენახვა",
+  "done1": "კლასიკური ფანფარა",
+  "done2": "ამღმავალი ფანფარა",
+  "done3": "ნათელი ფინალი",
+  "doneFanfareSub": "ჟღერს ყველა პერიოდის ბოლოს — აირჩიეთ 3 ფანფარიდან",
+  "durCompactHour": "{n} სთ",
+  "@durCompactHour": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "durCompactMin": "{n} წთ",
+  "@durCompactMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durCompactSec": "{n} წმ",
+  "@durCompactSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durHour": "{n} სთ",
+  "@durHour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durMin": "{n} წთ",
+  "@durMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durNone": "—",
+  "durSec": "{n} წმ",
+  "@durSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "exportBackup": "ასლის ექსპორტი",
+  "exportCancelled": "ექსპორტი გაუქმდა.",
+  "exportSubtitle": "Save {count, plural, one{პარამეტრები და {count} ვარჯიში .zip ფაილში} other{პარამეტრები და {count} ვარჯიში .zip ფაილში}}",
+  "@exportSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "exportSubtitleEmpty": "შეინახეთ პარამეტრები .zip ფაილში",
+  "importBackup": "ასლის იმპორტი",
+  "importBackupSub": "პარამეტრებისა და ისტორიის ჩანაცვლება .zip ფაილიდან",
+  "importCancelled": "იმპორტი გაუქმდა.",
+  "infoBadgeSemantics": "შესახებ და მხარდაჭერა",
+  "infoTitle": "შესახებ და მხარდაჭერა",
+  "keepScreenOn": "ეკრანი ჩართული დარჩეს",
+  "keepScreenOnSub": "ტაიმერის მუშაობისას ეკრანი არ ჩაქრება",
+  "labelFrequency": "სიხშირე",
+  "labelRestInterval": "დასვენების ინტერვალი",
+  "labelSets": "სეტები",
+  "labelWorkoutInterval": "ვარჯიშის ინტერვალი",
+  "languageSub": "აირჩიეთ ენა ან მიჰყევით სისტემის პარამეტრს",
+  "languageSystem": "სისტემური",
+  "lastWeek": "გასული კვირა",
+  "monthsCount": "{count, plural, one{{count} თვე} other{{count} თვე}}",
+  "@monthsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navSettings": "პარამეტრები",
+  "navStatistics": "სტატისტიკა",
+  "navTimer": "ტაიმერი",
+  "networkWarning": "გაგზავნეთ მხოლოდ არჩეულ ქსელში. Ethereum და BNB Chain ერთ მისამართს იყენებს, ამიტომ ქსელი განსაზღვრავს სახსრების დანიშნულებას.",
+  "noTraining": "ვარჯიშის გარეშე",
+  "noWorkoutsYet": "ჯერ ვარჯიშები არ არის",
+  "overview": "მიმოხილვა",
+  "periodDay": "დღე",
+  "periodMonth": "თვე",
+  "periodWeek": "კვირა",
+  "prestartInstant": "მყისიერი",
+  "prestartOff": "გამორთ.",
+  "prestartSub": "ათვლა პირველ ინტერვალამდე — 0 იწყებს მაშინვე",
+  "progressBar": "პროგრესის ზოლი",
+  "progressBarSub": "საერთო პროგრესის ჩვენება",
+  "purposeBullet1": "დააყენეთ სამუშაო, დასვენება, სეტები და სიხშირე და დაიწყეთ. ხმოვანი სიგნალები აღნიშნავს ყოველ წკაპსა და ფაზის ცვლილებას.",
+  "purposeBullet2": "სესიის დროს ეკრანი ჩართული რჩება, ათვლა კი მოსამზადებელ დროს გაძლევთ.",
+  "purposeBullet3": "დასრულებული სესიები ინახება. სტატისტიკა აჩვენებს ჯამებს და დიაგრამას დღის, კვირის ან თვის მიხედვით.",
+  "purposeBullet4": "ყველაფერი ინახება თქვენს მოწყობილობაზე. პარამეტრები და ისტორია შეიძლება შეინახოთ და აღადგინოთ.",
+  "purposeIntro": "Interval Timer უძღვება ვარჯიშს სამუშაო-დასვენების რეჟიმში — HIIT, წრიული, გაჭიმვა, სუნთქვა — რომ ეკრანს არ უყუროთ და ხელები თავისუფალი გქონდეთ.",
+  "qrSemantics": "{name}-ის შემოწირულობის QR კოდი",
+  "@qrSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "recordDetail": "ერთ. {units}  ·  დასვენება {rest}წმ  ·  სეტები {sets}  ·  სიხშირე {freq}წმ",
+  "@recordDetail": {
+    "placeholders": {
+      "units": {
+        "type": "int"
+      },
+      "rest": {
+        "type": "int"
+      },
+      "sets": {
+        "type": "int"
+      },
+      "freq": {
+        "type": "String"
+      }
+    }
+  },
+  "replaceWarning": "{count, plural, one{ეს ჩაანაცვლებს პარამეტრებს და {count} შენახულ ვარჯიშს. ვერ გაუქმდება.} other{ეს ჩაანაცვლებს პარამეტრებს და {count} შენახულ ვარჯიშს. ვერ გაუქმდება.}}",
+  "@replaceWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "replaceWarningEmpty": "ეს ჩაანაცვლებს მიმდინარე პარამეტრებს. შენახული ვარჯიშები არ გაქვთ.",
+  "restoreDialogTitle": "აღდგეს ეს ასლი?",
+  "sectionBackup": "სარეზერვო ასლი",
+  "sectionDoneFanfare": "დასრულების ფანფარა",
+  "sectionGeneral": "ზოგადი",
+  "sectionLanguage": "ენა",
+  "sectionPrestart": "წინასტარტი",
+  "sectionTickSound": "ტკიპის ხმა",
+  "sessionsCount": "{count, plural, one{{count} სესია} other{{count} სესია}}",
+  "@sessionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setWord": "სეტი",
+  "settingsTitle": "პარამეტრები",
+  "statisticsTitle": "სტატისტიკა",
+  "statusCompleted": "დასრულდა",
+  "statusPaused": "შეჩერებულია",
+  "statusReady": "მზადაა",
+  "statusRest": "დასვენება",
+  "statusStartIn": "დაწყება",
+  "statusWorkout": "ვარჯიში",
+  "subGetReady": "მოემზადეთ",
+  "subGreatJob": "შესანიშნავია!",
+  "subSetProgress": "სეტი {current}/{total} • დარჩენილი ინტერვალები",
+  "@subSetProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "subTapResume": "გასაგრძელებლად შეეხეთ",
+  "subUntilNext": "შემდეგ პერიოდამდე",
+  "supportDevelopment": "მხარდაჭერა",
+  "supportIntro": "აპი უფასოა, რეკლამის გარეშე და არაფერს აგროვებს. თუ სასარგებლოა, მადლობელი ვიქნები — აირჩიეთ ქსელი და დაასკანერეთ ან დააკოპირეთ მისამართი.",
+  "tapAnywhereToResume": "გასაგრძელებლად შეეხეთ ეკრანს",
+  "tapBarForDetail": "შეეხეთ სვეტს დეტალებისთვის",
+  "thisWeek": "ეს კვირა",
+  "tick1": "რბილი წკაპი",
+  "tick2": "ორმაგი წკაპი",
+  "tick3": "სიგნალური წკაპი",
+  "tick4": "მკვეთრი წკაპი",
+  "tick5": "სამმაგი წკაპი",
+  "tick6": "ნათელი წკაპი",
+  "tickSoundSub": "ჟღერს ყოველ ერთეულზე — აირჩიეთ 6 მოკლე წკაპიდან",
+  "timerSignal": "ხმოვანი სიგნალი",
+  "timerSignalSub": "სიგნალი ყოველ ერთეულზე",
+  "totalProgress": "საერთო პროგრესი {percent}%",
+  "@totalProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "totalSuffix": "სულ {seconds} წმ",
+  "@totalSuffix": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingTime": "ვარჯიშის დრო",
+  "unitIntervals": "ინტერვალი",
+  "unitSec": "წმ",
+  "unitUnits": "ერთეული",
+  "valueDone": "დასრულდა",
+  "weeksCount": "{count, plural, one{{count} კვირა} other{{count} კვირა}}",
+  "@weeksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "whatThisAppIsFor": "რისთვის არის ეს აპი"
+}

@@ -1,0 +1,308 @@
+{
+  "@@locale": "es",
+  "actionCancel": "Cancelar",
+  "actionCopy": "Copiar",
+  "actionNewSession": "NUEVA SESIÓN",
+  "actionPause": "PAUSA",
+  "actionReplace": "Reemplazar",
+  "actionReset": "REINICIAR",
+  "actionResume": "REANUDAR",
+  "actionStart": "INICIAR",
+  "addressCopied": "Dirección de {name} copiada",
+  "@addressCopied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "backedUpOn": "Copia del {date}{version}:",
+  "@backedUpOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "backupContents": "Contenido de la copia:",
+  "backupReadFailed": "No se pudo leer esa copia: {error}",
+  "@backupReadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupRestored": "{count, plural, =1{Restaurado 1 entrenamiento y tus ajustes.} other{Restaurados {count} entrenamientos y tus ajustes.}}",
+  "@backupRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSaveFailed": "No se pudo guardar la copia: {error}",
+  "@backupSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupSaved": "{count, plural, =1{Copia guardada — 1 entrenamiento y tus ajustes.} other{Copia guardada — {count} entrenamientos y tus ajustes.}}",
+  "@backupSaved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSub": "Guarda los ajustes y el historial en un archivo .zip, o restáuralos",
+  "bulletAllSettings": "• Todos los ajustes",
+  "bulletWorkouts": "{count, plural, =1{• 1 entrenamiento} other{• {count} entrenamientos}}",
+  "@bulletWorkouts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chainBitcoin": "Red Bitcoin",
+  "completedLabel": "Completados",
+  "daysCount": "{count, plural, =1{1 día} other{{count} días}}",
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dialogChooseBackup": "Elegir una copia de Interval Timer",
+  "dialogSaveBackup": "Guardar copia de Interval Timer",
+  "done1": "Fanfarria clásica",
+  "done2": "Fanfarria ascendente",
+  "done3": "Final brillante",
+  "doneFanfareSub": "Suena al final de todos los periodos — elige una de 3 fanfarrias",
+  "durCompactHour": "{n} h",
+  "@durCompactHour": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "durCompactMin": "{n} m",
+  "@durCompactMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durCompactSec": "{n} s",
+  "@durCompactSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durHour": "{n} h",
+  "@durHour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durMin": "{n} min",
+  "@durMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durNone": "—",
+  "durSec": "{n} s",
+  "@durSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "exportBackup": "Exportar copia",
+  "exportCancelled": "Exportación cancelada.",
+  "exportSubtitle": "Save {count, plural, =1{tus ajustes y 1 entrenamiento en un .zip} other{tus ajustes y {count} entrenamientos en un .zip}}",
+  "@exportSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "exportSubtitleEmpty": "Guarda tus ajustes en un .zip",
+  "importBackup": "Importar copia",
+  "importBackupSub": "Reemplazar ajustes e historial desde un .zip",
+  "importCancelled": "Importación cancelada.",
+  "infoBadgeSemantics": "Acerca de y apoyo",
+  "infoTitle": "Acerca de y apoyo",
+  "keepScreenOn": "Mantener pantalla encendida",
+  "keepScreenOnSub": "Evita que la pantalla se apague con el temporizador activo",
+  "labelFrequency": "FRECUENCIA",
+  "labelRestInterval": "INTERVALO DE DESCANSO",
+  "labelSets": "SERIES",
+  "labelWorkoutInterval": "INTERVALO DE TRABAJO",
+  "languageSub": "Elige el idioma de la app, o sigue el ajuste del sistema",
+  "languageSystem": "Idioma del sistema",
+  "lastWeek": "La semana pasada",
+  "monthsCount": "{count, plural, =1{1 mes} other{{count} meses}}",
+  "@monthsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navSettings": "Ajustes",
+  "navStatistics": "Estadísticas",
+  "navTimer": "Temporizador",
+  "networkWarning": "Envía solo en la red seleccionada. Ethereum y BNB Chain comparten una dirección, así que la red decide dónde llegan los fondos.",
+  "noTraining": "sin entrenamiento",
+  "noWorkoutsYet": "Aún no hay entrenamientos",
+  "overview": "RESUMEN",
+  "periodDay": "DÍA",
+  "periodMonth": "MES",
+  "periodWeek": "SEMANA",
+  "prestartInstant": "instantáneo",
+  "prestartOff": "Desactivado",
+  "prestartSub": "Cuenta atrás antes del primer intervalo — 0 para empezar al instante",
+  "progressBar": "Barra de progreso",
+  "progressBarSub": "Mostrar u ocultar el progreso total",
+  "purposeBullet1": "Ajusta trabajo, descanso, series y frecuencia, y empieza. Las señales marcan cada tic y cada cambio de fase, así el móvil puede quedarse en el bolsillo.",
+  "purposeBullet2": "La pantalla permanece encendida durante la sesión y una cuenta atrás te da tiempo a colocarte.",
+  "purposeBullet3": "Las sesiones terminadas se registran. Estadísticas muestra totales, rachas y un gráfico por día, semana o mes.",
+  "purposeBullet4": "Todo se guarda en tu dispositivo. Ajustes e historial se pueden exportar y restaurar.",
+  "purposeIntro": "Interval Timer ejecuta entrenamientos de trabajo y descanso — HIIT, circuitos, estiramientos, respiración — para no mirar la pantalla y tener las manos libres.",
+  "qrSemantics": "Código QR de donación de {name}",
+  "@qrSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "recordDetail": "Unidades {units}  ·  Descanso {rest}s  ·  Series {sets}  ·  Frec. {freq}s",
+  "@recordDetail": {
+    "placeholders": {
+      "units": {
+        "type": "int"
+      },
+      "rest": {
+        "type": "int"
+      },
+      "sets": {
+        "type": "int"
+      },
+      "freq": {
+        "type": "String"
+      }
+    }
+  },
+  "replaceWarning": "{count, plural, =1{Esto reemplaza tus ajustes y 1 entrenamiento guardado. No se puede deshacer.} other{Esto reemplaza tus ajustes y {count} entrenamientos guardados. No se puede deshacer.}}",
+  "@replaceWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "replaceWarningEmpty": "Esto reemplaza tus ajustes actuales. No tienes entrenamientos guardados que perder.",
+  "restoreDialogTitle": "¿Restaurar esta copia?",
+  "sectionBackup": "COPIA DE SEGURIDAD",
+  "sectionDoneFanfare": "FANFARRIA FINAL",
+  "sectionGeneral": "GENERAL",
+  "sectionLanguage": "IDIOMA",
+  "sectionPrestart": "CUENTA ATRÁS",
+  "sectionTickSound": "SONIDO DE TIC",
+  "sessionsCount": "{count, plural, =1{1 sesión} other{{count} sesiones}}",
+  "@sessionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setWord": "Serie",
+  "settingsTitle": "Ajustes",
+  "statisticsTitle": "Estadísticas",
+  "statusCompleted": "Completado",
+  "statusPaused": "En pausa",
+  "statusReady": "Listo",
+  "statusRest": "Descanso",
+  "statusStartIn": "Comienza en",
+  "statusWorkout": "Trabajo",
+  "subGetReady": "Prepárate",
+  "subGreatJob": "¡Buen trabajo!",
+  "subSetProgress": "Serie {current}/{total} • intervalos restantes",
+  "@subSetProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "subTapResume": "Toca Reanudar para continuar",
+  "subUntilNext": "Hasta el siguiente periodo",
+  "supportDevelopment": "APOYAR EL DESARROLLO",
+  "supportIntro": "La app es gratuita, sin anuncios y no recoge nada. Si te resulta útil, se agradece una propina — elige una red y escanea o copia la dirección.",
+  "tapAnywhereToResume": "Toca en cualquier lugar para reanudar",
+  "tapBarForDetail": "toca una barra para ver detalles",
+  "thisWeek": "Esta semana",
+  "tick1": "Clic suave",
+  "tick2": "Clic doble",
+  "tick3": "Clic de alerta",
+  "tick4": "Clic marcado",
+  "tick5": "Clic triple",
+  "tick6": "Clic brillante",
+  "tickSoundSub": "Suena en cada unidad de trabajo — elige uno de 6 clics cortos",
+  "timerSignal": "Señal sonora",
+  "timerSignalSub": "Suena en cada unidad de trabajo",
+  "totalProgress": "Progreso total {percent}%",
+  "@totalProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "totalSuffix": "{seconds} s en total",
+  "@totalSuffix": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingTime": "TIEMPO DE ENTRENAMIENTO",
+  "unitIntervals": "intervalos",
+  "unitSec": "s",
+  "unitUnits": "unidades",
+  "valueDone": "Hecho",
+  "weeksCount": "{count, plural, =1{1 semana} other{{count} semanas}}",
+  "@weeksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "whatThisAppIsFor": "Para qué sirve esta app"
+}

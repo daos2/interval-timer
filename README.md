@@ -7,7 +7,11 @@ with day/week/month charts, and zip backup/restore.
 Everything is stored on the device. No account, no ads, no analytics, and the
 app asks for no Android permissions.
 
-**Current version 1.4.0+5** · Application ID `com.intervaltimer.app` ·
+> Translations outside English are machine-produced and have not been reviewed
+> by native speakers. Corrections are welcome — the strings live in
+> [`3-code/lib/l10n/`](3-code/lib/l10n/), one `.arb` file per language.
+
+**Current version 1.5.0+6** · Application ID `com.intervaltimer.app` ·
 Android 7.0+ (API 24)
 
 ## Features
@@ -26,6 +30,9 @@ Android 7.0+ (API 24)
   them back. Imports are validated in full before anything is replaced, so a
   bad file is a no-op.
 - **About & Support** — what the app is for, plus a tip jar.
+- **Six languages** — English, Deutsch, Français, Español, Русский, ქართული,
+  chosen in Settings or left to follow the system. Dates, month names and
+  plural forms follow the chosen language.
 
 ## Install
 

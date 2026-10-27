@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../../l10n/app_localizations.dart';
+import '../../l10n/l10n_ext.dart';
 import '../../theme.dart';
+import '../backup/backup_service.dart';
 import '../info/info_screen.dart';
 import 'timer_controller.dart';
 
@@ -40,6 +43,7 @@ class _IdleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = context.l10n;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
@@ -48,14 +52,33 @@ class _IdleScreen extends StatelessWidget {
           backgroundColor: _kBg,
           elevation: 0,
           centerTitle: true,
-          title: const Text(
-            'Interval Timer',
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.w800,
-              color: _kTextPrimary,
-              letterSpacing: 0.5,
-            ),
+          // Taller than the 56 default: the title carries a version line
+          // under it, which would otherwise be clipped.
+          toolbarHeight: 68,
+          title: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Interval Timer',
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w800,
+                  color: _kTextPrimary,
+                  letterSpacing: 0.5,
+                ),
+              ),
+              Text(
+                BackupService.displayVersion,
+                style: const TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  // Same accent as the "I" badge beside it.
+                  color: _kAccent,
+                  letterSpacing: 0.8,
+                  height: 1.2,
+                ),
+              ),
+            ],
           ),
           actions: const [InfoButton(), SizedBox(width: 4)],
         ),
@@ -64,8 +87,8 @@ class _IdleScreen extends StatelessWidget {
           children: [
             // Workout interval — 6 buttons: [-60][-5][-1] value [+1][+5][+60]
             _StepperCard(
-              label: 'WORKOUT INTERVAL',
-              unit: 'units',
+              label: l.labelWorkoutInterval,
+              unit: l.unitUnits,
               value: controller.workoutUnits.toString(),
               steps: const [-60, -5, -1, 1, 5, 60],
               accentColor: const Color(0xFF70E000),
@@ -76,8 +99,8 @@ class _IdleScreen extends StatelessWidget {
             const SizedBox(height: 10),
             // Rest interval — 6 buttons: [-60][-5][-1] value [+1][+5][+60]
             _StepperCard(
-              label: 'REST INTERVAL',
-              unit: 'sec',
+              label: l.labelRestInterval,
+              unit: l.unitSec,
               value: controller.restSeconds.toString(),
               steps: const [-60, -5, -1, 1, 5, 60],
               accentColor: const Color(0xFFFFA62B),
@@ -87,7 +110,7 @@ class _IdleScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             _StepperCard(
-              label: 'SETS',
+              label: l.labelSets,
               unit: '',
               value: controller.sets.toString(),
               steps: const [-5, -1, 1, 5],
@@ -97,8 +120,8 @@ class _IdleScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             _StepperCard(
-              label: 'FREQUENCY',
-              unit: 'sec',
+              label: l.labelFrequency,
+              unit: l.unitSec,
               value: controller.frequencySeconds.toStringAsFixed(2),
               // Steps are expressed in hundredths of a second.
               steps: const [-100, -10, 10, 100],
@@ -122,7 +145,7 @@ class _IdleScreen extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: _ActionButton(
-                    label: controller.startButtonLabel,
+                    label: _startLabel(l, controller),
                     onTap: controller.startOrPause,
                     filled: true,
                   ),
@@ -131,7 +154,7 @@ class _IdleScreen extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: _ActionButton(
-                    label: 'RESET',
+                    label: l.actionReset,
                     onTap: controller.reset,
                     filled: false,
                   ),
@@ -477,28 +500,30 @@ class _ActiveTimerView extends StatelessWidget {
       TimerPhase.idle => (_kBg, Colors.white),
     };
 
+    final l = context.l10n;
+
     final title = switch (controller.phase) {
-      TimerPhase.prestart => 'Start in',
-      TimerPhase.workout => 'Workout',
-      TimerPhase.rest => 'Rest',
-      TimerPhase.paused => 'Paused',
-      TimerPhase.completed => 'Completed',
-      TimerPhase.idle => 'Ready',
+      TimerPhase.prestart => l.statusStartIn,
+      TimerPhase.workout => l.statusWorkout,
+      TimerPhase.rest => l.statusRest,
+      TimerPhase.paused => l.statusPaused,
+      TimerPhase.completed => l.statusCompleted,
+      TimerPhase.idle => l.statusReady,
     };
 
     final centerValue = switch (controller.phase) {
       TimerPhase.workout => '${controller.workoutIntervalsRemaining}',
-      TimerPhase.completed => 'Done',
+      TimerPhase.completed => l.valueDone,
       _ => '${controller.remainingSeconds}',
     };
 
     final subtitle = switch (controller.phase) {
-      TimerPhase.prestart => 'Get ready',
+      TimerPhase.prestart => l.subGetReady,
       TimerPhase.workout =>
-        'Set ${controller.currentSet}/${controller.sets} • intervals left',
-      TimerPhase.rest => 'Until next period',
-      TimerPhase.paused => 'Tap resume to continue',
-      TimerPhase.completed => 'Great job!',
+        l.subSetProgress(controller.currentSet, controller.sets),
+      TimerPhase.rest => l.subUntilNext,
+      TimerPhase.paused => l.subTapResume,
+      TimerPhase.completed => l.subGreatJob,
       TimerPhase.idle => '',
     };
 
@@ -549,8 +574,8 @@ class _ActiveTimerView extends StatelessWidget {
                                   color: Colors.white)),
                           Text(
                               controller.phase == TimerPhase.workout
-                                  ? 'intervals'
-                                  : 'sec',
+                                  ? l.unitIntervals
+                                  : l.unitSec,
                               style: const TextStyle(
                                   fontSize: 18, color: Colors.white70)),
                         ],
@@ -568,7 +593,7 @@ class _ActiveTimerView extends StatelessWidget {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        'Set ',
+                        '${l.setWord} ',
                         style: TextStyle(
                             fontSize: 20,
                             color: Colors.white.withValues(alpha: 0.45),
@@ -600,7 +625,7 @@ class _ActiveTimerView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Text(
-                      'Tap anywhere to resume',
+                      l.tapAnywhereToResume,
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.white.withValues(alpha: 0.35),
@@ -617,7 +642,8 @@ class _ActiveTimerView extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Total progress ${(controller.progress * 100).toStringAsFixed(1)}%',
+                    l.totalProgress(
+                        (controller.progress * 100).toStringAsFixed(1)),
                     style: const TextStyle(color: Colors.white70),
                   ),
                   const SizedBox(height: 12),
@@ -644,8 +670,8 @@ class _ActiveTimerView extends StatelessWidget {
                           ),
                           child: Text(
                             controller.phase == TimerPhase.completed
-                                ? 'NEW SESSION'
-                                : controller.startButtonLabel,
+                                ? l.actionNewSession
+                                : _startLabel(l, controller),
                             style: const TextStyle(
                                 fontWeight: FontWeight.w800, fontSize: 15),
                           ),
@@ -668,8 +694,8 @@ class _ActiveTimerView extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(14)),
                           ),
-                          child: const Text('RESET',
-                              style: TextStyle(
+                          child: Text(l.actionReset,
+                              style: const TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 15)),
                         ),
                       ),
@@ -684,4 +710,12 @@ class _ActiveTimerView extends StatelessWidget {
       ),
     );
   }
+}
+
+/// START / PAUSE / RESUME. Lived on the controller until v1.5, which put
+/// user-visible English in a place that cannot see the chosen language.
+String _startLabel(AppLocalizations l, TimerController controller) {
+  if (controller.isRunning) return l.actionPause;
+  if (controller.isPaused) return l.actionResume;
+  return l.actionStart;
 }

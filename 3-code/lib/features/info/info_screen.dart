@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../l10n/l10n_ext.dart';
 import '../../theme.dart';
 import '../backup/backup_service.dart';
 import 'donation.dart';
@@ -61,7 +62,7 @@ class _InfoButtonState extends State<InfoButton>
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
-      label: 'About and support',
+      label: context.l10n.infoBadgeSemantics,
       child: InkResponse(
         onTap: _open,
         radius: 24,
@@ -169,13 +170,14 @@ class _InfoScreenState extends State<InfoScreen> {
   }
 
   Future<void> _copy(DonationTarget target) async {
+    final message = context.l10n.addressCopied(target.name);
     await Clipboard.setData(ClipboardData(text: target.address));
     if (!mounted) return;
     HapticFeedback.mediumImpact();
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(SnackBar(
-        content: Text('${target.name} address copied'),
+        content: Text(message),
         backgroundColor: kSurfaceHigh,
         behavior: SnackBarBehavior.floating,
         duration: const Duration(seconds: 3),
@@ -185,6 +187,7 @@ class _InfoScreenState extends State<InfoScreen> {
   @override
   Widget build(BuildContext context) {
     final target = donationTargetFor(_network);
+    final l = context.l10n;
 
     return Scaffold(
       backgroundColor: kBg,
@@ -192,9 +195,9 @@ class _InfoScreenState extends State<InfoScreen> {
         backgroundColor: kBg,
         elevation: 0,
         iconTheme: const IconThemeData(color: kTextPrimary),
-        title: const Text(
-          'About & Support',
-          style: TextStyle(
+        title: Text(
+          l.infoTitle,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w700,
             color: kTextPrimary,
@@ -206,13 +209,12 @@ class _InfoScreenState extends State<InfoScreen> {
         children: [
           const _PurposeCard(),
           const SizedBox(height: 22),
-          const _SectionLabel('SUPPORT DEVELOPMENT'),
+          _SectionLabel(l.supportDevelopment),
           const SizedBox(height: 10),
-          const Text(
-            'The app is free, has no ads and collects nothing. If it is '
-            'useful to you, a tip is welcome — pick a network and scan or '
-            'copy the address.',
-            style: TextStyle(color: kTextSub, fontSize: 13, height: 1.5),
+          Text(
+            l.supportIntro,
+            style: const TextStyle(
+                color: kTextSub, fontSize: 13, height: 1.5),
           ),
           const SizedBox(height: 16),
           _NetworkSwitch(selected: _network, onSelect: _select),
@@ -221,11 +223,10 @@ class _InfoScreenState extends State<InfoScreen> {
           const SizedBox(height: 18),
           _AddressPanel(target: target, onCopy: () => _copy(target)),
           const SizedBox(height: 20),
-          const Text(
-            'Send only on the selected network. Ethereum and BNB Chain share '
-            'one address, so the network you send on is what decides where '
-            'the funds land.',
-            style: TextStyle(color: kTextSub, fontSize: 12, height: 1.5),
+          Text(
+            l.networkWarning,
+            style: const TextStyle(
+                color: kTextSub, fontSize: 12, height: 1.5),
           ),
           const SizedBox(height: 24),
           const Center(
@@ -261,41 +262,35 @@ class _PurposeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = context.l10n;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: kSurface,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'What this app is for',
-            style: TextStyle(
+            l.whatThisAppIsFor,
+            style: const TextStyle(
               color: kTextPrimary,
               fontSize: 16,
               fontWeight: FontWeight.w700,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
-            'Interval Timer runs work-and-rest workouts — HIIT, circuits, '
-            'stretching, breathing drills — so you can keep your eyes off '
-            'the screen and your hands free.',
-            style: TextStyle(color: kTextSub, fontSize: 13, height: 1.55),
+            l.purposeIntro,
+            style: const TextStyle(
+                color: kTextSub, fontSize: 13, height: 1.55),
           ),
-          SizedBox(height: 12),
-          _Bullet('Set the work interval, rest, sets and tick frequency, '
-              'then start. Audio cues mark every tick and every change of '
-              'phase, so the phone can stay in your pocket.'),
-          _Bullet('The screen stays awake while a session runs, and a '
-              'countdown gives you time to get into position.'),
-          _Bullet('Finished sessions are recorded. Statistics shows your '
-              'totals, streaks and a bar chart of training time by day, '
-              'week or month.'),
-          _Bullet('Everything is stored on your device. Settings and '
-              'history can be exported to a backup file and restored later.'),
+          const SizedBox(height: 12),
+          _Bullet(l.purposeBullet1),
+          _Bullet(l.purposeBullet2),
+          _Bullet(l.purposeBullet3),
+          _Bullet(l.purposeBullet4),
         ],
       ),
     );
@@ -428,7 +423,8 @@ class _QrPanel extends StatelessWidget {
                       target.qrAsset,
                       fit: BoxFit.contain,
                       filterQuality: FilterQuality.medium,
-                      semanticLabel: '${target.name} donation QR code',
+                      semanticLabel:
+                          context.l10n.qrSemantics(target.name),
                     ),
                   ),
                 ),
@@ -438,7 +434,7 @@ class _QrPanel extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         Text(
-          '${target.name}  ·  ${target.chain}',
+          '${target.name}  ·  ${_chainLabel(context, target)}',
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: kTextPrimary,
@@ -492,9 +488,10 @@ class _AddressPanel extends StatelessWidget {
                 ),
               ),
               icon: const Icon(Icons.copy_rounded, size: 18),
-              label: const Text(
-                'Copy',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+              label: Text(
+                context.l10n.actionCopy,
+                style: const TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w700),
               ),
             ),
           ),
@@ -503,3 +500,10 @@ class _AddressPanel extends StatelessWidget {
     );
   }
 }
+
+/// Only Bitcoin's chain line is prose; ERC20 and BEP20 are standard names
+/// that stay as they are in every language.
+String _chainLabel(BuildContext context, DonationTarget target) =>
+    target.network == DonationNetwork.bitcoin
+        ? context.l10n.chainBitcoin
+        : target.chain;

@@ -4,7 +4,7 @@ A Flutter interval-timer app for HIIT, Tabata and circuit training: configurable
 work/rest intervals, synthesised audio cues, training-time charts, zip
 backup/restore, and an about/donations screen.
 
-Version **1.4.0+5** · Application ID `com.intervaltimer.app` · Android 7.0+ (API 24)
+Version **1.5.0+6** · Application ID `com.intervaltimer.app` · Android 7.0+ (API 24)
 
 Android only in practice: `ios/` holds generated leftovers but no Xcode project,
 so iOS has to be regenerated with `flutter create --platforms=ios .` before it
@@ -42,7 +42,7 @@ flutter run
 flutter analyze && flutter test
 ```
 
-Both should be clean: no analyzer issues, 71 tests passing. The widget tests
+Both should be clean: no analyzer issues, 80 tests passing. The widget tests
 render the setup, settings and statistics screens at 320 px and 360 px wide and
 fail on any `RenderFlex` overflow, so layout regressions are caught without a
 device. The backup tests cover the archive round trip plus every rejection path
@@ -77,6 +77,10 @@ lib/
     info/
       donation.dart            donation addresses + QR pairing (pure Dart)
       info_screen.dart         "I" app-bar badge and About & Support screen
+  l10n/
+    app_*.arb                  translations, one file per language
+    app_localizations*.dart    generated from the .arb files
+    l10n_ext.dart              id -> translated text (sounds, periods, durations)
     settings/
       app_settings.dart        immutable settings model + JSON
       settings_repository.dart SharedPreferences persistence
@@ -105,6 +109,16 @@ and include periods with no training, so the horizontally scrolling strip in
 Bar height counts every recorded session; the Overview card and weekly headers
 count completed sessions only, so those totals differ when abandoned sessions
 exist.
+
+The UI is translated through Flutter's `gen_l10n`: `lib/l10n/*.arb` hold the
+strings and the Dart in the same folder is generated from them by
+`flutter gen-l10n` (and automatically by `flutter pub get`, since
+`generate: true` is set). The chosen language lives in `AppSettings
+.languageCode`, where `''` means "follow the system"; `main.dart` turns it
+into `MaterialApp.locale` and sets `Intl.defaultLocale` so bare `DateFormat`
+calls follow suit. Nothing user-visible belongs in a controller or model:
+sound names and phase labels are ids, resolved to text by `l10n_ext.dart`
+at paint time.
 
 The About & Support screen keeps its donation addresses in `donation.dart`,
 again Flutter-free, so the pairing of address to network to QR image is unit

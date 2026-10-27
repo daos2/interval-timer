@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../l10n/l10n_ext.dart';
 import '../../theme.dart';
 import '../statistics/training_chart.dart';
-import '../statistics/training_totals.dart';
 import '../statistics/workout_record.dart';
 import '../timer/timer_controller.dart';
 
@@ -19,11 +19,6 @@ const _kTextSub = kTextSub;
 
 class StatisticsScreen extends StatelessWidget {
   const StatisticsScreen({super.key});
-
-  // ── Human-readable duration ──────────────────────────────────────────────
-
-  // Shared with the chart so both read the same way.
-  static String _humanDuration(int totalSeconds) => humanDuration(totalSeconds);
 
   // ── Group records by ISO week ────────────────────────────────────────────
 
@@ -63,9 +58,9 @@ class StatisticsScreen extends StatelessWidget {
           backgroundColor: _kBg,
           elevation: 0,
           centerTitle: true,
-          title: const Text(
-            'Statistics',
-            style: TextStyle(
+          title: Text(
+            context.l10n.statisticsTitle,
+            style: const TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w800,
               color: _kTextPrimary,
@@ -75,9 +70,9 @@ class StatisticsScreen extends StatelessWidget {
           iconTheme: const IconThemeData(color: _kTextPrimary),
         ),
         body: records.isEmpty
-            ? const Center(
-                child: Text('No workouts yet',
-                    style: TextStyle(color: _kTextSub, fontSize: 16)))
+            ? Center(
+                child: Text(context.l10n.noWorkoutsYet,
+                    style: const TextStyle(color: _kTextSub, fontSize: 16)))
             : Builder(builder: (context) {
                 final weeks = _groupByWeek(records);
                 return ListView(
@@ -88,7 +83,7 @@ class StatisticsScreen extends StatelessWidget {
                       completedCount: controller.completedCount(),
                       totalSeconds: controller.totalTrainedSeconds(),
                       humanDuration:
-                          _humanDuration(controller.totalTrainedSeconds()),
+                          context.l10n.duration(controller.totalTrainedSeconds()),
                     ),
                     const SizedBox(height: 20),
 
@@ -101,9 +96,11 @@ class StatisticsScreen extends StatelessWidget {
                       _WeekHeader(
                         weekStart: week.weekStart,
                         weekFormatter: weekFormatter,
+                        thisWeekLabel: context.l10n.thisWeek,
+                        lastWeekLabel: context.l10n.lastWeek,
                         totalSeconds: week.totalCompletedSeconds,
                         humanDuration:
-                            _humanDuration(week.totalCompletedSeconds),
+                            context.l10n.duration(week.totalCompletedSeconds),
                       ),
                       const SizedBox(height: 8),
                       for (final record in week.records)
@@ -113,7 +110,7 @@ class StatisticsScreen extends StatelessWidget {
                             record: record,
                             formatter: dateFormatter,
                             humanDuration:
-                                _humanDuration(record.durationSeconds),
+                                context.l10n.duration(record.durationSeconds),
                           ),
                         ),
                       const SizedBox(height: 6),
@@ -174,8 +171,8 @@ class _SummaryCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              const Text('OVERVIEW',
-                  style: TextStyle(
+              Text(context.l10n.overview,
+                  style: const TextStyle(
                     color: _kAccent,
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -194,8 +191,9 @@ class _SummaryCard extends StatelessWidget {
                             color: _kTextPrimary,
                             fontSize: 28,
                             fontWeight: FontWeight.w800)),
-                    const Text('Completed',
-                        style: TextStyle(color: _kTextSub, fontSize: 12)),
+                    Text(context.l10n.completedLabel,
+                        style: const TextStyle(
+                            color: _kTextSub, fontSize: 12)),
                   ],
                 ),
               ),
@@ -212,7 +210,7 @@ class _SummaryCard extends StatelessWidget {
                               color: _kTextPrimary,
                               fontSize: 20,
                               fontWeight: FontWeight.w800)),
-                      Text('$totalSeconds sec total',
+                      Text(context.l10n.totalSuffix(totalSeconds),
                           style: const TextStyle(
                               color: _kTextSub, fontSize: 12)),
                     ],
@@ -233,12 +231,19 @@ class _WeekHeader extends StatelessWidget {
   const _WeekHeader({
     required this.weekStart,
     required this.weekFormatter,
+    required this.thisWeekLabel,
+    required this.lastWeekLabel,
     required this.totalSeconds,
     required this.humanDuration,
   });
 
   final DateTime weekStart;
   final DateFormat weekFormatter;
+
+  // Passed in rather than read from context: _weekLabel() is a plain method
+  // with no BuildContext of its own.
+  final String thisWeekLabel;
+  final String lastWeekLabel;
   final int totalSeconds;
   final String humanDuration;
 
@@ -251,8 +256,8 @@ class _WeekHeader extends StatelessWidget {
     final lastWeekStart =
         thisWeekStart.subtract(const Duration(days: 7));
 
-    if (weekStart == thisWeekStart) return 'This week';
-    if (weekStart == lastWeekStart) return 'Last week';
+    if (weekStart == thisWeekStart) return thisWeekLabel;
+    if (weekStart == lastWeekStart) return lastWeekLabel;
 
     final weekEnd = weekStart.add(const Duration(days: 6));
     return '${weekFormatter.format(weekStart)} – ${weekFormatter.format(weekEnd)}';
@@ -384,10 +389,12 @@ class _HistoryCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Units ${record.workoutUnits}  ·  '
-                  'Rest ${record.restSeconds}s  ·  '
-                  'Sets ${record.sets}  ·  '
-                  'Freq ${record.frequencySeconds.toStringAsFixed(2)}s',
+                  context.l10n.recordDetail(
+                    record.workoutUnits,
+                    record.restSeconds,
+                    record.sets,
+                    record.frequencySeconds.toStringAsFixed(2),
+                  ),
                   style: const TextStyle(color: _kTextSub, fontSize: 12),
                 ),
               ],

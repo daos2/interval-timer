@@ -10,6 +10,7 @@ import 'package:interval_timer/features/settings/app_settings.dart';
 import 'package:interval_timer/features/settings/settings_repository.dart';
 import 'package:interval_timer/features/settings/settings_screen.dart';
 import 'package:interval_timer/features/info/donation.dart';
+import 'package:interval_timer/l10n/app_localizations.dart';
 import 'package:interval_timer/features/info/info_screen.dart';
 import 'package:interval_timer/features/statistics/statistics_screen.dart';
 import 'package:interval_timer/features/statistics/training_chart.dart';
@@ -29,6 +30,8 @@ Widget _host(TimerController c, Widget child, {bool animations = false}) =>
       value: c,
       child: MaterialApp(
         home: child,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         builder: animations
             ? null
             : (context, inner) => MediaQuery(

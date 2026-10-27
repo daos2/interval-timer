@@ -14,20 +14,16 @@ import 'sound_service.dart';
 enum TimerPhase { idle, prestart, workout, rest, paused, completed }
 
 class TimerController extends ChangeNotifier {
-  static const Map<String, String> tickSoundOptions = {
-    'tick1': 'Soft click',
-    'tick2': 'Double click',
-    'tick3': 'Alert click',
-    'tick4': 'Punchy click',
-    'tick5': 'Triple click',
-    'tick6': 'Bright click',
-  };
+  // Ids only. The display names are translated, so they live in the l10n
+  // files and are resolved by `AppLocalizations.soundName` at paint time --
+  // a controller has no business holding user-visible English.
+  static const List<String> tickSoundIds = <String>[
+    'tick1', 'tick2', 'tick3', 'tick4', 'tick5', 'tick6',
+  ];
 
-  static const Map<String, String> doneSoundOptions = {
-    'done1': 'Classic fanfare',
-    'done2': 'Rising fanfare',
-    'done3': 'Bright finale',
-  };
+  static const List<String> doneSoundIds = <String>[
+    'done1', 'done2', 'done3',
+  ];
 
   TimerController({
     required SettingsRepository settingsRepository,
@@ -147,32 +143,6 @@ class TimerController extends ChangeNotifier {
     notifyListeners();
   }
 
-  String get statusLabel {
-    switch (phase) {
-      case TimerPhase.idle:
-        return 'Ready';
-      case TimerPhase.workout:
-        return 'Workout';
-      case TimerPhase.rest:
-        return 'Rest';
-      case TimerPhase.prestart:
-        return 'Start in';
-      case TimerPhase.paused:
-        return 'Paused';
-      case TimerPhase.completed:
-        return 'Completed';
-    }
-  }
-
-  String get startButtonLabel {
-    if (isRunning) {
-      return 'PAUSE';
-    }
-    if (isPaused) {
-      return 'RESUME';
-    }
-    return 'START';
-  }
 
   String get remainingPhaseText {
     final seconds = max(0, (remainingPhaseMs / 1000).ceil());

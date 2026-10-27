@@ -1,6 +1,6 @@
 Interval Timer App — Summary
 ============================
-Version 1.4.0 (build 5)
+Version 1.5.0 (build 6)
 
 Overview
 --------
@@ -181,6 +181,12 @@ Pausing & Resuming
   Tap START/PAUSE, or tap anywhere on the active screen
   Returns to the same position (time, set, phase preserved)
 
+Languages
+  English, Deutsch, Français, Español, Русский, ქართული
+  Settings → LANGUAGE. "System default" follows the phone's language.
+  Languages are listed in their own language, so a user who has the app in
+    a script they cannot read can still find their way back.
+
 About & Support
   Tap the pulsing "I" badge at the top right of the Timer screen
   Explains what the app is for, and offers a tip jar: pick BTC, ETH or BNB,
@@ -198,7 +204,15 @@ Tracking Progress
 Changelog
 ---------
 
-v1.4 (current)
+v1.5 (current)
+✅ The app is translated into German, French, Spanish, Russian and Georgian,
+   picked from Settings → LANGUAGE, or left to follow the system
+✅ Dates, month names and plural forms follow the chosen language
+✅ The version number is shown under the title on the Timer screen
+✅ Sound names and phase labels moved out of TimerController, which had been
+   holding user-visible English where no language could reach it
+
+v1.4
 ✅ New "About & Support" screen, reached from an animated "I" badge in the
    Timer app bar, describing what the app is for
 ✅ Donations: pick Bitcoin, Ethereum (ERC20) or BNB Chain (BEP20) and get the
@@ -273,6 +287,9 @@ Known Limitations
   to TimerController.totalTrainedSeconds.
 - The chart's period choice (day/week/month) is not remembered between visits
   to the Statistics screen; it starts on DAY each time.
+- Translations outside English are machine-produced and have not been
+  reviewed by native speakers. Georgian is the least certain of them.
+- The app name "Interval Timer" is deliberately left untranslated.
 - The donation addresses are compiled into the app. Changing them means
   shipping a new build; there is no remote configuration.
 - iOS is not buildable: ios/ has only generated files, no Xcode project.

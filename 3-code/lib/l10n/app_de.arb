@@ -1,0 +1,308 @@
+{
+  "@@locale": "de",
+  "actionCancel": "Abbrechen",
+  "actionCopy": "Kopieren",
+  "actionNewSession": "NEUE EINHEIT",
+  "actionPause": "PAUSE",
+  "actionReplace": "Ersetzen",
+  "actionReset": "ZURÜCKSETZEN",
+  "actionResume": "WEITER",
+  "actionStart": "START",
+  "addressCopied": "{name}-Adresse kopiert",
+  "@addressCopied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "backedUpOn": "Gesichert am {date}{version}:",
+  "@backedUpOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "backupContents": "Inhalt der Sicherung:",
+  "backupReadFailed": "Sicherung konnte nicht gelesen werden: {error}",
+  "@backupReadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupRestored": "{count, plural, =1{1 Training und deine Einstellungen wiederhergestellt.} other{{count} Trainings und deine Einstellungen wiederhergestellt.}}",
+  "@backupRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSaveFailed": "Sicherung konnte nicht gespeichert werden: {error}",
+  "@backupSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backupSaved": "{count, plural, =1{Sicherung gespeichert — 1 Training und deine Einstellungen.} other{Sicherung gespeichert — {count} Trainings und deine Einstellungen.}}",
+  "@backupSaved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSub": "Einstellungen und Trainingsverlauf in eine .zip-Datei sichern oder daraus wiederherstellen",
+  "bulletAllSettings": "• Alle App-Einstellungen",
+  "bulletWorkouts": "{count, plural, =1{• 1 Training} other{• {count} Trainings}}",
+  "@bulletWorkouts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chainBitcoin": "Bitcoin-Netzwerk",
+  "completedLabel": "Abgeschlossen",
+  "daysCount": "{count, plural, =1{1 Tag} other{{count} Tage}}",
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dialogChooseBackup": "Interval Timer-Sicherung auswählen",
+  "dialogSaveBackup": "Interval Timer-Sicherung speichern",
+  "done1": "Klassische Fanfare",
+  "done2": "Aufsteigende Fanfare",
+  "done3": "Helles Finale",
+  "doneFanfareSub": "Ertönt am Ende aller Runden — wähle eine von 3 Fanfaren",
+  "durCompactHour": "{n} Std.",
+  "@durCompactHour": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "durCompactMin": "{n} Min.",
+  "@durCompactMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durCompactSec": "{n} s",
+  "@durCompactSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durHour": "{n} Std.",
+  "@durHour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durMin": "{n} Min.",
+  "@durMin": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durNone": "—",
+  "durSec": "{n} Sek.",
+  "@durSec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "exportBackup": "Sicherung exportieren",
+  "exportCancelled": "Export abgebrochen.",
+  "exportSubtitle": "Save {count, plural, =1{Einstellungen und 1 Training in eine .zip-Datei} other{Einstellungen und {count} Trainings in eine .zip-Datei}}",
+  "@exportSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "exportSubtitleEmpty": "Einstellungen in eine .zip-Datei sichern",
+  "importBackup": "Sicherung importieren",
+  "importBackupSub": "Einstellungen und Verlauf aus einer .zip-Datei ersetzen",
+  "importCancelled": "Import abgebrochen.",
+  "infoBadgeSemantics": "Über und unterstützen",
+  "infoTitle": "Über & Unterstützen",
+  "keepScreenOn": "Bildschirm anlassen",
+  "keepScreenOnSub": "Verhindert, dass der Bildschirm während des Timers ausgeht",
+  "labelFrequency": "FREQUENZ",
+  "labelRestInterval": "PAUSENINTERVALL",
+  "labelSets": "SÄTZE",
+  "labelWorkoutInterval": "TRAININGSINTERVALL",
+  "languageSub": "App-Sprache wählen oder der Systemeinstellung folgen",
+  "languageSystem": "Systemstandard",
+  "lastWeek": "Letzte Woche",
+  "monthsCount": "{count, plural, =1{1 Monat} other{{count} Monate}}",
+  "@monthsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navSettings": "Einstellungen",
+  "navStatistics": "Statistik",
+  "navTimer": "Timer",
+  "networkWarning": "Sende nur im gewählten Netzwerk. Ethereum und BNB Chain teilen sich eine Adresse — das gewählte Netzwerk entscheidet, wo die Mittel ankommen.",
+  "noTraining": "kein Training",
+  "noWorkoutsYet": "Noch keine Trainings",
+  "overview": "ÜBERSICHT",
+  "periodDay": "TAG",
+  "periodMonth": "MONAT",
+  "periodWeek": "WOCHE",
+  "prestartInstant": "sofort",
+  "prestartOff": "Aus",
+  "prestartSub": "Countdown vor dem ersten Intervall — 0 startet sofort",
+  "progressBar": "Fortschrittsbalken",
+  "progressBarSub": "Gesamtfortschritt ein- oder ausblenden",
+  "purposeBullet1": "Stelle Belastung, Pause, Sätze und Tick-Frequenz ein und starte. Tonsignale markieren jeden Tick und jeden Phasenwechsel — das Handy kann in der Tasche bleiben.",
+  "purposeBullet2": "Der Bildschirm bleibt während einer Einheit an, und ein Countdown gibt dir Zeit, dich bereitzumachen.",
+  "purposeBullet3": "Abgeschlossene Einheiten werden erfasst. Die Statistik zeigt Summen, Serien und ein Balkendiagramm nach Tag, Woche oder Monat.",
+  "purposeBullet4": "Alles wird auf deinem Gerät gespeichert. Einstellungen und Verlauf lassen sich sichern und später wiederherstellen.",
+  "purposeIntro": "Interval Timer steuert Trainings mit Belastung und Pause — HIIT, Zirkel, Dehnen, Atemübungen — damit du den Blick vom Bildschirm und die Hände frei hast.",
+  "qrSemantics": "{name}-Spenden-QR-Code",
+  "@qrSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "recordDetail": "Einheiten {units}  ·  Pause {rest}s  ·  Sätze {sets}  ·  Freq. {freq}s",
+  "@recordDetail": {
+    "placeholders": {
+      "units": {
+        "type": "int"
+      },
+      "rest": {
+        "type": "int"
+      },
+      "sets": {
+        "type": "int"
+      },
+      "freq": {
+        "type": "String"
+      }
+    }
+  },
+  "replaceWarning": "{count, plural, =1{Dies ersetzt deine Einstellungen und 1 gespeichertes Training. Das kann nicht rückgängig gemacht werden.} other{Dies ersetzt deine Einstellungen und {count} gespeicherte Trainings. Das kann nicht rückgängig gemacht werden.}}",
+  "@replaceWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "replaceWarningEmpty": "Dies ersetzt deine aktuellen Einstellungen. Du hast keine gespeicherten Trainings zu verlieren.",
+  "restoreDialogTitle": "Diese Sicherung wiederherstellen?",
+  "sectionBackup": "SICHERUNG",
+  "sectionDoneFanfare": "SCHLUSSFANFARE",
+  "sectionGeneral": "ALLGEMEIN",
+  "sectionLanguage": "SPRACHE",
+  "sectionPrestart": "VORLAUF",
+  "sectionTickSound": "TICK-TON",
+  "sessionsCount": "{count, plural, =1{1 Einheit} other{{count} Einheiten}}",
+  "@sessionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setWord": "Satz",
+  "settingsTitle": "Einstellungen",
+  "statisticsTitle": "Statistik",
+  "statusCompleted": "Fertig",
+  "statusPaused": "Pausiert",
+  "statusReady": "Bereit",
+  "statusRest": "Pause",
+  "statusStartIn": "Start in",
+  "statusWorkout": "Training",
+  "subGetReady": "Mach dich bereit",
+  "subGreatJob": "Gut gemacht!",
+  "subSetProgress": "Satz {current}/{total} • Intervalle übrig",
+  "@subSetProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "subTapResume": "Zum Fortfahren auf Weiter tippen",
+  "subUntilNext": "Bis zur nächsten Runde",
+  "supportDevelopment": "ENTWICKLUNG UNTERSTÜTZEN",
+  "supportIntro": "Die App ist kostenlos, werbefrei und sammelt nichts. Wenn sie dir nützt, freue ich mich über eine Spende — Netzwerk wählen, scannen oder Adresse kopieren.",
+  "tapAnywhereToResume": "Zum Fortsetzen irgendwo tippen",
+  "tapBarForDetail": "Balken für Details antippen",
+  "thisWeek": "Diese Woche",
+  "tick1": "Weicher Klick",
+  "tick2": "Doppelklick",
+  "tick3": "Signalklick",
+  "tick4": "Kräftiger Klick",
+  "tick5": "Dreifachklick",
+  "tick6": "Heller Klick",
+  "tickSoundSub": "Ertönt bei jeder Trainingseinheit — wähle einen von 6 kurzen Klicks",
+  "timerSignal": "Tonsignal",
+  "timerSignalSub": "Signal bei jeder Trainingseinheit abspielen",
+  "totalProgress": "Gesamtfortschritt {percent}%",
+  "@totalProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "totalSuffix": "{seconds} Sek. gesamt",
+  "@totalSuffix": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingTime": "TRAININGSZEIT",
+  "unitIntervals": "Intervalle",
+  "unitSec": "Sek.",
+  "unitUnits": "Einheiten",
+  "valueDone": "Fertig",
+  "weeksCount": "{count, plural, =1{1 Woche} other{{count} Wochen}}",
+  "@weeksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "whatThisAppIsFor": "Wofür diese App da ist"
+}

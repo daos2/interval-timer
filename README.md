@@ -92,5 +92,6 @@ network you send on is what decides where the funds land.
 
 ## License
 
-Not yet licensed. Without a license file, default copyright applies and others
-have no rights to reuse the code.
+[MIT](LICENSE) © 2026 daos2 — free to use, modify and redistribute, including
+commercially, as long as the copyright notice is kept. The software comes with
+no warranty.

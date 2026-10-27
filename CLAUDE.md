@@ -88,4 +88,6 @@ Not covered by tests: the system file-picker dialogs used by backup export/impor
 
 ## Docs
 
+Licensed MIT (`LICENSE` at the repo root); the root `README.md` states it too.
+
 `3-code/plan.txt` is the feature summary, changelog and known-limitations list. `3-code/README.md` covers layout, commands and architecture. Both are current as of v1.4.0+5 — keep them so when behaviour changes.

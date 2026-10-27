@@ -17,7 +17,7 @@ its known limitations. This file covers the code.
 
 ```
 Interval_timer/
-├── 3-code/        the Flutter project (source + build output)
+├── source/        the Flutter project (source + build output)
 ├── 5-releases/    shipped APKs
 ├── logo.jpg       icon design source
 └── logo2.jpg
@@ -27,7 +27,7 @@ There used to be a second full copy of the project in `4-build/`, plus an older
 one at the root. They drifted: the "source" folder fell behind and still carried
 the old `com.example.interval_timer` application ID, so an APK built from it
 installed as a *second* app instead of upgrading the existing one. Both copies
-were removed in v1.2 — `3-code/` is now the only project.
+were removed in v1.2 — `source/` is now the only project.
 
 ## Getting started
 

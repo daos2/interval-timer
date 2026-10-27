@@ -1,0 +1,8 @@
+The app now speaks six languages: English, German, French, Spanish, Russian
+and Georgian. Pick one in Settings, or leave it following your phone. Dates,
+month names and plural forms follow your choice.
+
+The version number now appears under the title on the Timer screen.
+
+Translations other than English are machine-produced and have not been
+reviewed by native speakers. Corrections are welcome.

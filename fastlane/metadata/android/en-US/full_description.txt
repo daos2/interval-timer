@@ -1,0 +1,50 @@
+Interval Timer runs work-and-rest workouts — HIIT, Tabata, circuits,
+stretching, breathing drills — so you can keep your eyes off the screen and
+your hands free.
+
+Set the work interval, rest, number of sets and tick frequency, then press
+start. A countdown gives you time to get into position, and from there the app
+talks to you in sound: a two-tone marker opens each work period and sounds
+again when rest begins, a tick counts every unit, and the last unit of a period
+ticks longer as a warning. The phone can stay in your pocket.
+
+<b>Features</b>
+
+* Four configurable fields, each with coarse and fine buttons. Frequency is
+  held to whole hundredths of a second, so repeated taps never drift.
+* Prestart countdown of 0 to 20 seconds; set it to 0 to start instantly.
+* Large countdown with a progress ring, a set counter and an optional overall
+  progress bar. The screen stays awake while a session runs.
+* Six tick sounds and three completion fanfares, previewable before you choose.
+  All are synthesised in memory, so the app ships no audio files.
+* Statistics: a bar chart of training time by day, week or month that scrolls
+  sideways and opens on the newest period. Rest days stay on the axis as empty
+  bars. Tap a bar for its exact total, date range and session count.
+* Weekly totals and a full session list showing date, settings, duration and
+  whether the session was completed.
+* Backup and restore: export your settings and history to a .zip and import
+  them back. The archive is plain JSON, so you can read or edit it with any zip
+  tool. Imports are validated in full and confirmed before anything is
+  replaced, so a damaged or foreign file changes nothing.
+
+<b>Privacy</b>
+
+Everything is stored on your device. There is no account, no advertising and no
+analytics, and the app requests <b>no Android permissions at all</b> — backup
+files go through the system file picker, which needs none. It works entirely
+offline.
+
+<b>Languages</b>
+
+English, German, French, Spanish, Russian and Georgian. Pick one in Settings,
+or leave it following your phone. Dates, month names and plural forms follow
+your choice. Languages are listed in their own language, so you can always find
+your way back.
+
+Translations other than English are machine-produced and have not yet been
+reviewed by native speakers — corrections are very welcome.
+
+<b>Recorded time is honest</b>
+
+A session's recorded duration is actual trained time. It excludes the prestart
+countdown and any time you spent paused.

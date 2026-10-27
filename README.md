@@ -12,7 +12,7 @@ Android 7.0+ (API 24)
 
 > Translations outside English are machine-produced and have not been reviewed
 > by native speakers. Corrections are welcome — the strings live in
-> [`3-code/lib/l10n/`](3-code/lib/l10n/), one `.arb` file per language.
+> [`source/lib/l10n/`](source/lib/l10n/), one `.arb` file per language.
 
 ## Install
 
@@ -122,10 +122,10 @@ screen explains what the app is for and holds the donation addresses.
 
 ## Build from source
 
-The Flutter project lives in `3-code/`, not at the repository root.
+The Flutter project lives in `source/`, not at the repository root.
 
 ```bash
-cd 3-code
+cd source
 flutter pub get
 flutter run                     # debug, on a connected device
 flutter build apk --release     # output in build/app/outputs/flutter-apk/
@@ -134,7 +134,7 @@ flutter build apk --release     # output in build/app/outputs/flutter-apk/
 Checks, both of which should be clean:
 
 ```bash
-cd 3-code
+cd source
 flutter analyze
 flutter test
 ```
@@ -146,7 +146,8 @@ Translations are generated from `lib/l10n/*.arb` during `flutter pub get`; run
 
 ```
 Interval_timer/
-├── 3-code/        the Flutter project (source, tests, docs)
+├── source/        the Flutter project (source, tests, docs)
+├── fastlane/      store listing text, used by F-Droid
 ├── 5-releases/    shipped APKs (not tracked in git — see Releases)
 ├── donate/        QR source images
 └── logo*.jpg      app icon design sources
@@ -158,7 +159,7 @@ They belong on the Releases page instead.
 
 ## Documentation
 
-- [`3-code/README.md`](3-code/README.md) — architecture, commands, file map
+- [`source/README.md`](source/README.md) — architecture, commands, file map
 - [`CLAUDE.md`](CLAUDE.md) — working notes and load-bearing invariants
 
 ## Support

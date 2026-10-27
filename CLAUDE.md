@@ -4,24 +4,31 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Layout
 
-Flutter app. **Android only in practice** — `3-code/ios/` contains generated leftovers (an AppIcon set, `GeneratedPluginRegistrant`) but no `Runner.xcodeproj`, `Info.plist` or `Podfile`, so iOS cannot build until it is regenerated with `flutter create --platforms=ios .`. **The project is not at the repo root — it lives in `3-code/`.** Run every `flutter`/`dart` command from there.
+Flutter app. **Android only in practice** — `source/ios/` contains generated leftovers (an AppIcon set, `GeneratedPluginRegistrant`) but no `Runner.xcodeproj`, `Info.plist` or `Podfile`, so iOS cannot build until it is regenerated with `flutter create --platforms=ios .`. **The project is not at the repo root — it lives in `source/`.** Run every `flutter`/`dart` command from there.
 
 ```
 Interval_timer/
-├── 3-code/       the Flutter project (source + build/ output)
+├── source/       the Flutter project (source + build/ output)
+├── fastlane/     store-listing text (F-Droid reads metadata/android/<locale>/)
 ├── 5-releases/   shipped APKs, named "Interval timer vX.Y.Z.apk"
 └── logo*.jpg     icon design sources
 ```
 
 The repository is git-tracked as of v1.4.0. Shipped APKs under `5-releases/` are **deliberately untracked** (`.gitignore`): at ~47 MB each they would live in the history forever, and git cannot drop them again without a rewrite. Publish them as GitHub Release assets instead.
 
-The root `README.md` is the GitHub landing page; `3-code/README.md` remains the developer-facing one. Both carry the version number, so a bump touches them too.
+The root `README.md` is the GitHub landing page; `source/README.md` remains the developer-facing one. Both carry the version number, so a bump touches them too.
 
-`3-code/` is the only source tree. A second full copy at `4-build/` and an older one at the repo root were deleted in v1.2: they had silently drifted, and the stale copy still carried the old `com.example.interval_timer` application ID, so an APK built from it installed as a *second* app instead of upgrading. Do not reintroduce a parallel project copy.
+The project folder was named `3-code/` until v1.5.0; it is `source/` now. Nothing outside the docs referenced the old name, but `.dart_tool/` and `build/` cache absolute paths, so after any such move they must be deleted and `flutter pub get` re-run.
+
+A `flutter build apk` leaves a **Gradle daemon** holding a lock on the project folder, which makes a rename fail with "Permission denied". Stop it with `./gradlew --stop` from `source/android` rather than killing java processes — Android Studio uses the same JBR runtime.
+
+**Store listing:** `fastlane/metadata/android/en-US/` holds `title.txt` (max 50), `short_description.txt` (max 80, single line, **no trailing period**), `full_description.txt` (max 4000, limited HTML) and `changelogs/<versionCode>.txt` (max 500). F-Droid reads these straight from the repo, so a release that bumps versionCode wants a new changelog file beside the others.
+
+`source/` is the only source tree. A second full copy at `4-build/` and an older one at the repo root were deleted in v1.2: they had silently drifted, and the stale copy still carried the old `com.example.interval_timer` application ID, so an APK built from it installed as a *second* app instead of upgrading. Do not reintroduce a parallel project copy.
 
 ## Commands
 
-All from `3-code/`:
+All from `source/`:
 
 ```bash
 flutter pub get
@@ -95,6 +102,6 @@ Not covered by tests: the system file-picker dialogs used by backup export/impor
 
 Licensed MIT (`LICENSE` at the repo root); the root `README.md` states it too.
 
-The root `README.md` is the published account of the app: what it does, how to use it, the settings reference and the known limitations. It is the GitHub landing page, and it carries the version number. `3-code/README.md` is the developer-facing one — layout, commands, architecture. Both are current as of v1.5.0+6; keep them so when behaviour changes.
+The root `README.md` is the published account of the app: what it does, how to use it, the settings reference and the known limitations. It is the GitHub landing page, and it carries the version number. `source/README.md` is the developer-facing one — layout, commands, architecture. Both are current as of v1.5.0+6; keep them so when behaviour changes.
 
-`3-code/plan.txt` still exists locally as scratch working notes but is **untracked on purpose** (see `.gitignore`). Do not restore it to git and do not treat it as authoritative: it duplicated the README's feature list and the two drifted. Anything worth publishing belongs in a README.
+`source/plan.txt` still exists locally as scratch working notes but is **untracked on purpose** (see `.gitignore`). Do not restore it to git and do not treat it as authoritative: it duplicated the README's feature list and the two drifted. Anything worth publishing belongs in a README.

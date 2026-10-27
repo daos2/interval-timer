@@ -1,0 +1,38 @@
+name: interval_timer
+description: Interval timer workout app.
+publish_to: "none"
+
+version: 1.4.0+5
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.2
+  shared_preferences: ^2.2.3
+  wakelock_plus: ^1.2.5
+  audioplayers: ^6.0.0
+  intl: ^0.19.0
+  archive: ^4.3.0
+  file_picker: ^13.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_icon.jpg"
+  min_sdk_android: 21
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/app_icon.jpg
+    - assets/donate/

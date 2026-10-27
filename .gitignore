@@ -1,0 +1,14 @@
+# Flutter build output, tooling caches and IDE files are ignored by
+# 3-code/.gitignore, which applies to everything beneath that folder.
+
+# Shipped APKs. Each is ~47 MB, and git keeps every version forever: the four
+# built so far would add ~190 MB to the history that no later commit can
+# remove without rewriting it. Attach them to a GitHub Release instead, where
+# they are downloadable but not cloned.
+5-releases/*.apk
+
+# OS and editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp

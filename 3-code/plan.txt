@@ -1,0 +1,291 @@
+Interval Timer App — Summary
+============================
+Version 1.4.0 (build 5)
+
+Overview
+--------
+A modern, feature-rich interval timer workout application built with Flutter.
+Designed for high-intensity interval training (HIIT) and customizable workout
+routines with visual feedback, audio signals, and detailed statistics tracking.
+
+
+Core Features
+-------------
+
+⏱️ Timer Configuration
+
+Workout Interval — Customizable duration in units (default: 60)
+Rest Interval    — Recovery time between sets in seconds (default: 10 sec)
+Sets             — Number of workout repetitions (default: 5)
+Frequency        — Interval between tick signals in seconds (default: 1.00 sec)
+Prestart         — Countdown before the first interval, 0–20 sec (default: 10)
+                   Configured in Settings. 0 starts the workout instantly.
+
+🎯 Easy Controls
+
+Workout / Rest:  [-60] [-5] [-1] | value | [+1] [+5] [+60]
+Sets:            [-5]  [-1]      | value | [+1] [+5]
+Frequency:       [-1.0] [-0.1]   | value | [+0.1] [+1.0]
+                 plus a fine-tune row:  [-0.01]  [+0.01]
+
+Frequency is held to whole hundredths of a second, so repeated ±0.01 taps
+never accumulate floating-point drift. Minimum 0.01 sec.
+
+Instant summary showing total duration, work time, and rest periods.
+Reset button restores default values when on the setup screen.
+
+🔊 Audio Signals
+
+6 Tick Sound Options — Short clicks for each workout unit
+  Soft click, double click, alert click, punchy pop, triple click, bright click
+
+3 Done Fanfare Sounds — Celebratory tones at workout completion
+  Classic C-E-G-C chord, rising pentatonic climb, fast two-octave arpeggio
+
+Smart Cueing:
+  Interval marker (two-tone 1200 Hz → 1500 Hz) — marks the start of a workout
+    period, and again when the period ends and rest begins
+  Regular ticks — count each interval unit
+  Lowered tick (150% duration) — warns of the final unit
+
+Toggleable in Settings; all sounds are synthesised in memory as WAV at runtime
+(no asset files). Audio failures (lost focus, no output device) are swallowed —
+a missed cue never interrupts a running workout.
+
+📊 Active Workout Display
+
+Large countdown with progress ring
+Set counter: Set 2 / 5 (color-coded by phase)
+Color-changing backgrounds
+  blue = prestart, green = workout, orange = rest, purple = done
+Progress bar showing total session completion
+Tap anywhere on the paused screen to resume
+
+📈 Statistics & History
+
+Training Time Chart — Bar chart of total training time, with DAY / WEEK /
+  MONTH buttons to change the calendar unit.
+  The strip scrolls sideways and opens pinned to the newest period, so bars
+    keep a readable width however long the history grows (a year of daily
+    bars squeezed onto one screen would be under a pixel each).
+  Periods with no training stay on the axis as empty bars, so rest days and
+    gaps are visible rather than compressed away.
+  Bars carry no value labels — tap one to put its exact total, date range and
+    session count in the card header. Tap it again to go back to the total.
+  The axis labels itself: a period that opens a new month is named ("Sep")
+    instead of numbered, and in the month view January shows the year.
+  Bar height counts every recorded session, completed or abandoned. Note
+    that the Overview card and the weekly headers count completed sessions
+    only, so their totals are lower when abandoned sessions exist.
+
+Overall Summary — Total completed workouts + human-readable total time
+Weekly Breakdown — Automatic grouping by ISO week (Mon–Sun)
+  "This week", "Last week", or a date range label
+  Total weekly workout time displayed prominently
+Detailed History — Each session shows date/time, settings, duration and
+  completion status, with a color-coded indicator
+  (green = completed, red = incomplete)
+
+Recorded duration is actual trained time: it excludes the prestart countdown
+and any time spent paused.
+
+⚙️ Customizable Settings
+
+Keep screen on during workout (prevents auto-sleep)
+Show/hide progress bar
+Toggle tick signals on/off
+Prestart countdown length (0–20 sec)
+Sound preview buttons (tap to hear before selection)
+Export / import backup (see below)
+
+💾 Backup & Restore
+
+Export backup — writes settings and the full workout history to a .zip file
+  at a location you choose. Suggested name sorts chronologically, e.g.
+  interval-timer-backup-2026-09-21_1815.zip
+
+Import backup — reads such a .zip back, replacing settings and history.
+
+Archive layout:
+  manifest.json  — schema version, app version, export time, entry counts
+  settings.json  — the settings object
+  history.json   — the workout list, newest first
+
+All three are plain indented JSON, so a backup can be inspected or edited by
+hand with any zip tool.
+
+Safety:
+  The file is fully parsed and validated before anything is replaced, so an
+    unreadable or foreign .zip is rejected without touching your data.
+  Import asks for confirmation first, showing the backup's date and how many
+    workouts it holds against how many you currently have.
+  A backup written by a newer app version is refused rather than half-read.
+  A single damaged history row is skipped; the rest of the backup still loads.
+  Restoring abandons any session in progress without recording it.
+
+Uses the system file picker (Storage Access Framework on Android), so no
+storage permission is requested.
+
+
+Design & UX
+-----------
+
+🎨 Visual Theme
+
+Dark Theme across all screens (#0B0F14 background)
+Accent Colors:
+  Mint green (#4FFFB0) — primary actions
+  Green      (#70E000) — workout phase
+  Orange     (#FFA62B) — rest phase
+  Blue       (#5DA9E9) — prestart phase
+  Purple     (#9D4EDD) — completion fanfare
+Modern Components — Rounded corners, subtle dividers, inline labels
+
+Stepper rows scale their button labels down on narrow screens, so the setup
+screen lays out correctly from 320 dp width upward.
+
+🖼️ App Icon
+
+Custom electric/energy-themed stopwatch icon
+Blue-to-orange gradient with lightning effects
+Optimized for all device sizes (36–1024px)
+
+
+Technical Stack
+---------------
+Framework:        Flutter
+State Management: Provider (single TimerController as ChangeNotifier)
+Audio:            AudioPlayers (in-memory WAV synthesis, lazily initialised)
+Backup:           archive (zip) + file_picker (system save/open dialogs)
+Persistence:      SharedPreferences (settings + history as JSON strings)
+Screen Stay-on:   Wakelock Plus (best effort; failures are non-fatal)
+Localization:     Intl
+Application ID:   com.intervaltimer.app
+Platforms:        Android 7.0+ (API 24, mipmap ldpi → xxxhdpi)
+
+
+Key User Workflows
+------------------
+
+Starting a Workout
+  1. Adjust intervals, sets, and frequency on the setup screen
+  2. Tap START → prestart countdown (length set in Settings; skipped if 0)
+  3. Hear the interval marker as the workout begins
+  4. Tick sounds play at each interval boundary
+  5. Hear the lowered tick on the final interval
+  6. Hear the marker again as the period ends; rest begins automatically
+  7. Repeat for the configured number of sets
+  8. Hear the fanfare when all sets complete
+
+Pausing & Resuming
+  Tap START/PAUSE, or tap anywhere on the active screen
+  Returns to the same position (time, set, phase preserved)
+
+About & Support
+  Tap the pulsing "I" badge at the top right of the Timer screen
+  Explains what the app is for, and offers a tip jar: pick BTC, ETH or BNB,
+    then scan the QR or hit Copy to put the address on the clipboard
+  Ethereum and BNB Chain share one address; the screen says so, because the
+    network you send on is what decides where the funds land
+
+Tracking Progress
+  Switch to Statistics to see the training-time chart, weekly totals, history
+  Tap DAY / WEEK / MONTH to rebucket the chart; swipe the bars for older
+    periods, and tap a bar to read its exact total
+  View human-readable durations (e.g. "1 h 23 min 45 sec")
+
+
+Changelog
+---------
+
+v1.4 (current)
+✅ New "About & Support" screen, reached from an animated "I" badge in the
+   Timer app bar, describing what the app is for
+✅ Donations: pick Bitcoin, Ethereum (ERC20) or BNB Chain (BEP20) and get the
+   QR plus the address, with a one-tap Copy button
+✅ QR images are cropped to the code itself, so they sit on the screen with
+   no frame of their own
+✅ The badge stops pulsing when the system asks for reduced motion
+✅ Fixed: a statistics layout test only passed on Mondays, because its
+   fixture put "today" and "yesterday" in the same week on every other day
+
+v1.3
+✅ Statistics gained a training-time bar chart with DAY / WEEK / MONTH buttons
+✅ The bar strip scrolls horizontally and opens on the newest period, so a
+   long history stays readable instead of being squeezed to hairlines
+✅ Empty periods are kept as zero bars, so gaps in training are visible
+✅ Tapping a bar shows that period's exact total, date range and session count
+✅ Fixed: the weekly header chip overflowed its row on narrow screens, which
+   clipped the label; it now shrinks and ellipsises instead
+✅ Statistics is now covered by the 320/360 dp layout tests, which it was not
+
+v1.2
+✅ Backup & restore: export settings and history to a .zip, import them back
+✅ Import validates the whole archive before replacing anything, and asks for
+   confirmation showing what is in the backup vs what you would lose
+✅ Project folders collapsed to a single source tree (see README)
+
+v1.1
+✅ Prestart countdown is configurable from 0 to 20 seconds in Settings
+   (0 skips the countdown and starts the workout instantly)
+✅ Frequency fine-tune buttons: ±0.01 sec, shown to two decimal places
+✅ Frequency snaps to whole hundredths — no floating-point drift
+✅ Fixed: recorded workout duration included the prestart countdown and all
+   paused time, overstating every entry in Statistics
+✅ Fixed: stepper rows overflowed on 360 dp-wide phones, which also made the
+   outermost ± buttons untappable
+✅ Fixed: a failing wakelock call could skip the settings notification, leaving
+   the Settings screen stuck on stale values
+✅ Settings now repaint immediately instead of waiting for the disk write
+✅ Audio player is created on first use and can no longer throw into the timer
+✅ App label in the launcher is now "Interval Timer"
+✅ Removed the unused flutter_tts dependency
+✅ Replaced the template widget test with 15 real tests
+✅ Analyzer is clean (deprecated withOpacity / activeColor calls updated)
+
+v1.0
+✅ Dark theme applied to all screens
+✅ Weekly statistics grouping with total time per week
+✅ Easy ±1/±5/±60 adjustment buttons for all parameters
+✅ Improved set counter display during workout
+✅ Tap-to-resume on paused screen with hint text
+✅ Reset to factory defaults on idle screen
+✅ Smart audio cues
+✅ Custom animated app icon
+✅ In-memory sound synthesis (no external audio files)
+
+
+Known Limitations
+-----------------
+- Backgrounding the app throttles the timer. Elapsed time self-corrects on
+  return, but tick sounds during the gap are skipped and phase timing drifts.
+  Keeping the screen on (default) avoids this. A foreground service would be
+  the proper fix.
+- Release builds are signed with the Flutter debug key. Fine for sideloading,
+  not publishable to Play. Changing to a real key later will require users to
+  uninstall first.
+- History cannot be cleared or edited in the app, and has no size cap. It can
+  be edited out of band by unzipping a backup, changing history.json and
+  importing it again.
+- The chart counts every recorded session, while the Overview card and the
+  weekly headers count completed ones only. With abandoned sessions in the
+  history the two totals differ by design; aligning them is a one-line change
+  to TimerController.totalTrainedSeconds.
+- The chart's period choice (day/week/month) is not remembered between visits
+  to the Statistics screen; it starts on DAY each time.
+- The donation addresses are compiled into the app. Changing them means
+  shipping a new build; there is no remote configuration.
+- iOS is not buildable: ios/ has only generated files, no Xcode project.
+  Run `flutter create --platforms=ios .` in 3-code/ to regenerate it.
+- No in-app volume control; cue volume follows the device media volume.
+- The preview ▶ button in Settings also selects that sound.
+- The done fanfare plays even when "Timer signal" is switched off.
+
+
+Perfect For
+-----------
+High-intensity interval training (HIIT)
+CrossFit-style workouts
+Tabata training
+Custom circuit training
+Accessible interval training with audio-only mode

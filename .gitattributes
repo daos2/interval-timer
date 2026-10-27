@@ -1,0 +1,9 @@
+# Normalise line endings: the working tree is Windows, contributors may not be.
+* text=auto eol=lf
+
+# Binary assets, never diffed or line-ending-converted.
+*.jpg binary
+*.png binary
+*.apk binary
+*.keystore binary
+*.jks binary
